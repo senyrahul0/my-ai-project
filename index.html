@@ -6,15 +6,12 @@
     <title>Faridabad Lab - Critical Parts Sourcing | Industrial Procurement Specialists</title>
     <meta name="description" content="Faridabad Lab specializes in sourcing critical industrial parts for manufacturing. Get competitive quotations, guaranteed QC against ISO/ASME standards, and save up to 30%. Based in Sector 24, Faridabad.">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -240,11 +237,9 @@
 </head>
 <body class="antialiased overflow-x-hidden bg-industrial-900">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-slate-800/50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)">
                     <div class="relative w-12 h-12 group-hover:scale-105 transition-transform">
                         <svg viewBox="0 0 100 100" class="w-full h-full">
@@ -274,7 +269,6 @@
                     </div>
                 </div>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#services" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">Services</a>
                     <a href="#about" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">About</a>
@@ -283,7 +277,6 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button onclick="toggleMobileMenu()" class="text-industrial-300 hover:text-white p-2">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -294,7 +287,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-800">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#services" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">Services</a>
@@ -304,34 +296,28 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-grid">
-        <!-- Background Effects -->
         <div class="absolute inset-0 bg-gradient-to-b from-industrial-900 via-transparent to-industrial-900"></div>
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
         <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
             
-            <!-- Badge -->
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/30 border border-blue-800/50 text-sm text-blue-300 mb-8 animate-float">
                 <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
                 Mechanical Engineering Expertise • Sector 24, Faridabad
             </div>
 
-            <!-- Main Heading -->
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
                 <span class="text-white">Critical Parts.</span><br>
                 <span class="gradient-text italic">Best Prices.</span><br>
                 <span class="text-white">Delivered.</span>
             </h1>
 
-            <!-- Sub-heading -->
             <p class="text-xl md:text-2xl text-industrial-400 max-w-2xl mx-auto mb-12 font-light">
                 Get competitive quotations from vetted vendors. Your single point of contact for precision manufacturing.
             </p>
 
-            <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                 <a href="#quote" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-lg transition-all shadow-xl shadow-blue-900/50 hover:shadow-blue-900/80 transform hover:-translate-y-1 flex items-center justify-center gap-2">
                     Request Quote Now
@@ -344,7 +330,6 @@
                 </a>
             </div>
 
-            <!-- Key Highlights / Trust Bar -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                 <div class="glass-panel p-6 rounded-xl border border-slate-700/50 hover:border-blue-500/30 transition-all">
                     <div class="w-12 h-12 mx-auto mb-4 bg-blue-600/20 rounded-lg flex items-center justify-center">
@@ -377,7 +362,6 @@
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                 <svg class="w-6 h-6 text-industrial-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
@@ -386,7 +370,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -395,7 +378,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- CNC Machining -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('cnc')">
                     <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -412,7 +394,6 @@
                     </div>
                 </div>
 
-                <!-- Casting -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('casting')">
                     <div class="w-14 h-14 bg-cyan-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -429,7 +410,6 @@
                     </div>
                 </div>
 
-                <!-- Forging -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('forging')">
                     <div class="w-14 h-14 bg-indigo-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,7 +426,6 @@
                     </div>
                 </div>
 
-                <!-- Technical Inspection -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('inspection')">
                     <div class="w-14 h-14 bg-emerald-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -463,7 +442,6 @@
                     </div>
                 </div>
 
-                <!-- Vendor Management -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('vendor')">
                     <div class="w-14 h-14 bg-purple-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -480,7 +458,6 @@
                     </div>
                 </div>
 
-                <!-- Sheet Metal -->
                 <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('sheetmetal')">
                     <div class="w-14 h-14 bg-orange-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -500,14 +477,12 @@
         </div>
     </section>
 
-    <!-- Service Modals -->
     <div id="serviceModal" class="modal">
         <div class="modal-content glass-panel-dark rounded-3xl">
             <div id="modalBody"></div>
         </div>
     </div>
 
-    <!-- About Us Section -->
     <section id="about" class="py-24 bg-slate-900/50 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-cyan-600/5"></div>
         
@@ -587,7 +562,6 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section class="py-24 bg-industrial-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -596,7 +570,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-                <!-- Step 1 -->
                 <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
                     <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-blue-400 mx-auto mb-6 border-2 border-blue-500">
                         1
@@ -607,7 +580,6 @@
                     </p>
                 </div>
 
-                <!-- Step 2 -->
                 <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
                     <div class="w-16 h-16 bg-cyan-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-cyan-400 mx-auto mb-6 border-2 border-cyan-500">
                         2
@@ -618,7 +590,6 @@
                     </p>
                 </div>
 
-                <!-- Step 3 -->
                 <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
                     <div class="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-green-400 mx-auto mb-6 border-2 border-green-500">
                         3
@@ -632,11 +603,9 @@
         </div>
     </section>
 
-    <!-- Quote Form Section -->
     <section id="quote" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl relative overflow-hidden">
-                <!-- Decorative Elements -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
                 <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-600/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
@@ -646,8 +615,11 @@
                         <p class="text-industrial-400">Get competitive quotations within 24 hours</p>
                     </div>
 
-                    <form action="mailto:rahulsen.yadav@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-6" id="enquiryForm">
-                        
+                    <form id="enquiryForm" class="space-y-6">
+                        <input type="hidden" name="access_key" value="762f2d0a-37b4-4d0e-a995-f3ea249816f3">
+                        <input type="hidden" name="subject" value="New Sourcing Enquiry - Faridabad Lab">
+                        <input type="hidden" name="from_name" value="Faridabad Lab Website">
+
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label for="company" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Company Name *</label>
@@ -717,11 +689,10 @@
                             </div>
                         </div>
 
-                        <!-- File Upload Section -->
                         <div class="space-y-2">
                             <label class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Technical Drawings / CAD Files</label>
                             <div class="relative">
-                                <input type="file" id="fileUpload" name="drawings" multiple accept=".pdf,.dwg,.dxf,.step,.stp,.igs,.iges,.stl,.jpg,.jpeg,.png" 
+                                <input type="file" id="fileUpload" name="attachment" multiple accept=".pdf,.dwg,.dxf,.step,.stp,.igs,.iges,.stl,.jpg,.jpeg,.png" 
                                        class="hidden" onchange="handleFileSelect(event)">
                                 <label for="fileUpload" 
                                        class="w-full px-4 py-8 rounded-lg input-industrial border-2 border-dashed border-slate-600 hover:border-blue-500 flex flex-col items-center justify-center cursor-pointer transition-all group">
@@ -739,7 +710,7 @@
                         <input type="hidden" name="timestamp" id="timestamp">
                         <input type="hidden" name="files_data" id="files_data">
 
-                        <button type="submit" 
+                        <button type="submit" id="submitBtn"
                                 class="w-full py-4 mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-lg rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 group">
                             <span>Submit Enquiry</span>
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -767,7 +738,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="border-t border-slate-800 bg-black/40 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -1046,14 +1016,12 @@
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
                 <div class="relative">
-                    <!-- Close Button -->
                     <button onclick="closeServiceModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-industrial-400 hover:text-white transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
 
-                    <!-- Header -->
                     <div class="text-center mb-8 pt-4">
                         <div class="w-20 h-20 bg-${service.color}-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1064,7 +1032,6 @@
                         <p class="text-industrial-400 max-w-3xl mx-auto text-lg">${service.description}</p>
                     </div>
 
-                    <!-- Image Placeholder -->
                     <div class="image-placeholder rounded-2xl h-64 md:h-96 mb-12 flex items-center justify-center border border-slate-700">
                         <div class="text-center">
                             <svg class="w-24 h-24 mx-auto mb-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1074,9 +1041,7 @@
                         </div>
                     </div>
 
-                    <!-- Details Grid -->
                     <div class="grid md:grid-cols-3 gap-8 mb-12">
-                        <!-- Capabilities -->
                         <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                                 <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1096,7 +1061,6 @@
                             </ul>
                         </div>
 
-                        <!-- Materials -->
                         <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                                 <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1116,7 +1080,6 @@
                             </ul>
                         </div>
 
-                        <!-- Applications -->
                         <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                             <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
                                 <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1137,7 +1100,6 @@
                         </div>
                     </div>
 
-                    <!-- CTA Section -->
                     <div class="bg-gradient-to-r from-${service.color}-600/20 to-${service.color}-800/20 rounded-2xl p-8 border border-${service.color}-500/30 text-center">
                         <h3 class="text-2xl font-bold text-white mb-3">Need ${service.title}?</h3>
                         <p class="text-industrial-400 mb-6 max-w-2xl mx-auto">
@@ -1292,7 +1254,7 @@
         document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const submitBtn = this.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('submitBtn');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
@@ -1308,103 +1270,61 @@
             const timestamp = new Date().toISOString();
             document.getElementById('timestamp').value = timestamp;
             
-            // Prepare structured email content
-            const emailContent = {
-                access_key: "762f2d0a-37b4-4d0e-a995-f3ea249816f3", // Web3Forms API Key
-                subject: `🔧 New Enquiry: ${formData.get('part_description')} - ${formData.get('company')}`,
-                from_name: "Faridabad Lab Website",
-                to: "rahulsen.yadav@gmail.com",
-                company: formData.get('company'),
-                contact_person: formData.get('contact_person'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                part_description: formData.get('part_description'),
-                material: formData.get('material') || 'Not specified',
-                quantity: formData.get('quantity') || 'Not specified',
-                specifications: formData.get('specifications') || 'Not provided',
-                files_info: selectedFiles.length > 0 ? selectedFiles.map(f => `${f.name} (${formatFileSize(f.size)})`).join(', ') : 'No files attached',
-                timestamp: new Date(timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-                message: `
-NEW ENQUIRY FROM WEBSITE
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📋 COMPANY DETAILS
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-Company: ${formData.get('company')}
-Contact: ${formData.get('contact_person')}
-Email: ${formData.get('email')}
-Phone: ${formData.get('phone')}
-
-🔩 PART REQUIREMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-Part: ${formData.get('part_description')}
-Material: ${formData.get('material') || 'Not specified'}
-Quantity: ${formData.get('quantity') || 'Not specified'}
-
-Specifications: 
-${formData.get('specifications') || 'Not provided'}
-
-📎 FILES: ${selectedFiles.length} file(s) uploaded
-${selectedFiles.length > 0 ? selectedFiles.map(f => `- ${f.name} (${formatFileSize(f.size)})`).join('\n') : ''}
-
-⚠️ Customer has uploaded files. Contact them to receive technical drawings.
-
-Timestamp: ${new Date(timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-                `
-            };
+            // Explicitly append files to FormData
+            // Web3Forms uses 'attachment' field for single/multiple files
+            // NOTE: For multiple files, we might need to iterate.
+            // However, typical free Web3Forms only supports one 'attachment'.
+            // Let's try appending all selected files.
             
-            // Store form data in localStorage for backup
-            const enquiryData = {
-                timestamp: timestamp,
-                company: formData.get('company'),
-                contact_person: formData.get('contact_person'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                part_description: formData.get('part_description'),
-                material: formData.get('material'),
-                quantity: formData.get('quantity'),
-                specifications: formData.get('specifications'),
-                files: selectedFiles.map(f => ({ name: f.name, size: f.size }))
-            };
+            // Clear existing 'attachment' entries from formData to add our custom list
+            formData.delete('attachment'); 
             
-            try {
-                localStorage.setItem(`enquiry_${timestamp}`, JSON.stringify(enquiryData));
-            } catch (e) {
-                console.error('Could not save to localStorage:', e);
+            if (selectedFiles.length > 0) {
+                // Append each file. Note: Some services only take the last one if same name
+                // Web3Forms usually handles 'attachment' as an array or single file.
+                selectedFiles.forEach(file => {
+                    formData.append('attachment', file);
+                });
             }
-            
-            // Try Web3Forms first
+
             try {
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(emailContent)
+                    body: formData // Send FormData directly for file support
                 });
                 
                 const result = await response.json();
                 
                 if (result.success) {
                     console.log('Email sent successfully via Web3Forms');
+                    showSuccess();
                 } else {
-                    throw new Error('Web3Forms submission failed');
+                    throw new Error(result.message || 'Web3Forms submission failed');
                 }
             } catch (error) {
-                console.error('Web3Forms error, falling back to mailto:', error);
+                console.error('Web3Forms error:', error);
+                alert("Error sending message: " + error.message + ". Trying backup method...");
                 
-                // Fallback to mailto
-                const mailtoBody = emailContent.message;
-                const mailtoLink = `mailto:rahulsen.yadav@gmail.com?subject=${encodeURIComponent(emailContent.subject)}&body=${encodeURIComponent(mailtoBody)}`;
-                window.open(mailtoLink, '_blank');
-            }
-            
-            // Show success message
-            setTimeout(() => {
+                // Fallback: Mailto (can't attach files directly but can pre-fill text)
+                // Construct mailto link
+                const subject = `New Enquiry: ${formData.get('part_description')} - ${formData.get('company')}`;
+                const body = `
+Company: ${formData.get('company')}
+Contact: ${formData.get('contact_person')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+Part: ${formData.get('part_description')}
+Material: ${formData.get('material')}
+Quantity: ${formData.get('quantity')}
+Specs: ${formData.get('specifications')}
+
+(Please attach any drawings to this email manually)
+                `;
+                window.location.href = `mailto:rahulsen.yadav@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                showSuccess();
-            }, 1000);
+            }
         });
 
         function showSuccess() {
@@ -1421,6 +1341,8 @@ Timestamp: ${new Date(timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolka
             const successMsg = document.getElementById('successMessage');
             
             form.reset();
+            selectedFiles = []; // Clear files
+            updateFileList();   // Clear UI list
             form.style.display = 'block';
             successMsg.classList.add('hidden');
         }
