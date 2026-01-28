@@ -90,7 +90,7 @@
         }
         
         .glass-panel-dark {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(148, 163, 184, 0.2);
         }
@@ -178,13 +178,12 @@
         
         .modal-content {
             position: relative;
-            max-width: 1000px;
+            max-width: 1200px;
             width: 95%;
             max-height: 90vh;
             overflow-y: auto;
             margin: 20px;
             animation: scaleIn 0.4s ease-out;
-            border-radius: 20px;
         }
         
         .modal-content::-webkit-scrollbar {
@@ -288,6 +287,34 @@
                 top: auto;
                 bottom: -2rem;
                 transform: translateX(-50%);
+            }
+        }
+
+        /* WHATSAPP WIDGET STYLES */
+        .whatsapp-button {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .whatsapp-widget-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 40;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 640px) {
+            .whatsapp-chat-box {
+                position: fixed !important;
+                width: 90vw !important;
+                bottom: 100px !important;
+                right: auto !important;
+                left: 5vw !important;
             }
         }
     </style>
@@ -536,11 +563,11 @@
         </div>
     </section>
 
-    <!-- SERVICE MODAL POPUP -->
+    <!-- SERVICE MODAL -->
     <div id="serviceModal" class="modal">
         <div class="modal-content glass-panel-dark rounded-2xl relative p-8 md:p-12">
             <span class="close-btn" onclick="closeServiceModal()">&times;</span>
-            <div id="modalBody" class="space-y-6"></div>
+            <div id="modalBody"></div>
         </div>
     </div>
 
@@ -636,6 +663,7 @@
             </div>
         </div>
     </section>
+
     <section class="py-24 bg-industrial-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -869,7 +897,7 @@
                             <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
-                            <a href="/cdn-cgi/l/email-protection#9ae8fbf2eff6e9fff4b4e3fbfefbecdafdf7fbf3f6b4f9f5f7" class="hover:text-white transition-colors"><span class="__cf_email__" data-cfemail="cdbfaca5b8a1bea8a3e3b4aca9acbb8daaa0aca4a1e3aea2a0">[email&#160;protected]</span></a>
+                            <a href="mailto:rahulsen.yadav@gmail.com" class="hover:text-white transition-colors">rahulsen.yadav@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -886,283 +914,21 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // SERVICE DETAILS OBJECT WITH ALL INFORMATION
-        const serviceDetails = {
-            cnc: {
-                title: 'CNC Machining Services',
-                description: 'Precision CNC milling and turning for complex geometries.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">Service Overview</h3>
-                    <p class="text-industrial-400 mb-6">We specialize in precision CNC milling and turning services for components requiring tight tolerances and complex geometries. State-of-the-art machinery handles materials from soft metals to hardened steel.</p>
-                    
-                    <h3 class="text-2xl font-bold text-white mb-4">Key Capabilities</h3>
-                    <ul class="space-y-3 text-industrial-400 mb-6">
-                        <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> <span><strong>Multi-axis Machining:</strong> 3, 4, and 5-axis CNC programming</span></li>
-                        <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> <span><strong>Tight Tolerances:</strong> ±0.01mm on critical dimensions</span></li>
-                        <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> <span><strong>Materials:</strong> Stainless steel, aluminum, brass, titanium, hardened steel</span></li>
-                        <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> <span><strong>Surface Finish:</strong> Ra 0.4 to Ra 3.2 microns</span></li>
-                        <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> <span><strong>Production Runs:</strong> Prototype to high-volume manufacturing</span></li>
-                    </ul>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Quality Assurance</h3>
-                    <p class="text-industrial-400 mb-6">All parts undergo CMM inspection with test certificates. ISO 9001:2015 certified facility.</p>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300"><strong>Lead Time:</strong> 5-15 business days | <strong>Minimum Order:</strong> Single piece welcome</p>
-                    </div>
-                `
-            },
-            casting: {
-                title: 'Casting Solutions',
-                description: 'Sand, investment, and die casting for metal components.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">Service Overview</h3>
-                    <p class="text-industrial-400 mb-6">Comprehensive casting solutions for complex metal components using advanced casting techniques suitable for both small and large production runs.</p>
-                    
-                    <h3 class="text-2xl font-bold text-white mb-4">Casting Methods Available</h3>
-                    <div class="space-y-3 mb-6">
-                        <div class="border border-slate-700 rounded-lg p-4">
-                            <h4 class="text-white font-bold mb-2">Sand Casting</h4>
-                            <p class="text-sm text-industrial-400">Traditional process for large and medium-sized castings with excellent design flexibility</p>
-                        </div>
-                        <div class="border border-slate-700 rounded-lg p-4">
-                            <h4 class="text-white font-bold mb-2">Investment Casting (Lost Wax)</h4>
-                            <p class="text-sm text-industrial-400">Precision casting with superior surface finish and tight tolerances</p>
-                        </div>
-                        <div class="border border-slate-700 rounded-lg p-4">
-                            <h4 class="text-white font-bold mb-2">Die Casting</h4>
-                            <p class="text-sm text-industrial-400">High-volume manufacturing for aluminum, zinc, and magnesium</p>
-                        </div>
-                    </div>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Materials</h3>
-                    <p class="text-industrial-400 mb-6">Ductile iron, gray iron, aluminum, zinc, brass, stainless steel</p>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300"><strong>Lead Time:</strong> 15-45 days | <strong>Quality:</strong> ISO 8062 certified</p>
-                    </div>
-                `
-            },
-            forging: {
-                title: 'Forging Services',
-                description: 'Hot and cold forging for high-strength components.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">Service Overview</h3>
-                    <p class="text-industrial-400 mb-6">Expert hot and cold forging for components requiring exceptional strength and durability. Forged parts offer superior mechanical properties compared to casting.</p>
-                    
-                    <h3 class="text-2xl font-bold text-white mb-4">Forging Capabilities</h3>
-                    <ul class="space-y-3 text-industrial-400 mb-6">
-                        <li class="flex items-start gap-3"><span class="text-indigo-400 font-bold">✓</span> <span><strong>Hot Forging:</strong> Hammer and press forging for various sizes</span></li>
-                        <li class="flex items-start gap-3"><span class="text-indigo-400 font-bold">✓</span> <span><strong>Cold Forging:</strong> Precision forming for high accuracy</span></li>
-                        <li class="flex items-start gap-3"><span class="text-indigo-400 font-bold">✓</span> <span><strong>Materials:</strong> Carbon steel, alloy steel, stainless steel, titanium</span></li>
-                        <li class="flex items-start gap-3"><span class="text-indigo-400 font-bold">✓</span> <span><strong>Finishing:</strong> Heat treatment, machining, coating available</span></li>
-                        <li class="flex items-start gap-3"><span class="text-indigo-400 font-bold">✓</span> <span><strong>Strength Advantage:</strong> 10-20% higher strength than castings</span></li>
-                    </ul>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Applications</h3>
-                    <p class="text-industrial-400 mb-6">Automotive, industrial, aerospace, and defense sectors</p>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300"><strong>Component Weight:</strong> 100g to 50kg | <strong>Lead Time:</strong> 20-40 days</p>
-                    </div>
-                `
-            },
-            inspection: {
-                title: 'Technical Inspection Services',
-                description: 'Quality verification and dimensional inspection.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">Inspection Services</h3>
-                    <ul class="space-y-3 text-industrial-400 mb-6">
-                        <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> <span><strong>Dimensional Inspection:</strong> CMM measurements with ±0.01mm accuracy</span></li>
-                        <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> <span><strong>Visual Inspection:</strong> Surface finish and defect assessment</span></li>
-                        <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> <span><strong>NDT Testing:</strong> Ultrasonic, magnetic particle, dye penetrant</span></li>
-                        <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> <span><strong>Hardness Testing:</strong> Rockwell, Brinell, Vickers testing</span></li>
-                        <li class="flex items-start gap-3"><span class="text-emerald-400 font-bold">✓</span> <span><strong>FAI Reports:</strong> First Article Inspection per NADCAP standards</span></li>
-                    </ul>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Certifications</h3>
-                    <p class="text-industrial-400 mb-6">ISO 9001, ISO 3161, AS9102 compliance. NADCAP certified facility.</p>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300"><strong>Turnaround:</strong> 24-48 hours | <strong>Reporting:</strong> Detailed reports with measurements and photos</p>
-                    </div>
-                `
-            },
-            vendor: {
-                title: 'Vendor Management Services',
-                description: 'Complete SPOC for manufacturing vendor coordination.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">What We Manage</h3>
-                    <ul class="space-y-3 text-industrial-400 mb-6">
-                        <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">✓</span> <span><strong>Vendor Network:</strong> 50+ vetted suppliers across all manufacturing processes</span></li>
-                        <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">✓</span> <span><strong>Quotation Management:</strong> Multi-quote collection and comparison</span></li>
-                        <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">✓</span> <span><strong>Quality Assurance:</strong> Third-party inspection and verification</span></li>
-                        <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">✓</span> <span><strong>Delivery Coordination:</strong> Production tracking and on-time delivery</span></li>
-                        <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">✓</span> <span><strong>Documentation:</strong> Invoicing, test certificates, compliance</span></li>
-                    </ul>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Key Benefits</h3>
-                    <ul class="space-y-2 text-industrial-400 text-sm mb-6">
-                        <li>• Save 15-30% on procurement costs through negotiation</li>
-                        <li>• Reduce supplier management overhead by 60-70%</li>
-                        <li>• Guarantee consistent quality across vendors</li>
-                        <li>• Access to local qualified suppliers in Faridabad region</li>
-                        <li>• 24/7 availability for urgent requirements</li>
-                    </ul>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300">Perfect for companies outsourcing procurement. Transaction-based or monthly retainer options available.</p>
-                    </div>
-                `
-            },
-            sheetmetal: {
-                title: 'Sheet Metal Fabrication',
-                description: 'Laser cutting, bending, and welding services.',
-                content: `
-                    <h3 class="text-2xl font-bold text-white mb-4">Fabrication Services</h3>
-                    <ul class="space-y-3 text-industrial-400 mb-6">
-                        <li class="flex items-start gap-3"><span class="text-orange-400 font-bold">✓</span> <span><strong>Laser Cutting:</strong> High-precision for carbon/stainless/aluminum</span></li>
-                        <li class="flex items-start gap-3"><span class="text-orange-400 font-bold">✓</span> <span><strong>CNC Bending:</strong> Automated press brake with ±1mm accuracy</span></li>
-                        <li class="flex items-start gap-3"><span class="text-orange-400 font-bold">✓</span> <span><strong>Welding & Assembly:</strong> MIG/TIG welding and riveting with inspection</span></li>
-                        <li class="flex items-start gap-3"><span class="text-orange-400 font-bold">✓</span> <span><strong>Finishing:</strong> Powder coating, plating, paint application</span></li>
-                        <li class="flex items-start gap-3"><span class="text-orange-400 font-bold">✓</span> <span><strong>Design Support:</strong> DFM recommendations and optimization</span></li>
-                    </ul>
-
-                    <h3 class="text-2xl font-bold text-white mb-4">Materials & Specifications</h3>
-                    <p class="text-industrial-400 mb-4"><strong>Materials:</strong> Mild steel, stainless steel, aluminum, brass, copper</p>
-                    <p class="text-industrial-400 mb-6"><strong>Thickness Range:</strong> 0.5mm to 6mm</p>
-
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
-                        <p class="text-sm text-industrial-300"><strong>Lead Time:</strong> 7-20 days depending on complexity | Design support available for optimization</p>
-                    </div>
-                `
-            }
-        };
-
-        // OPEN SERVICE MODAL FUNCTION
-        function openServiceModal(serviceId) {
-            const modal = document.getElementById('serviceModal');
-            const modalBody = document.getElementById('modalBody');
-            
-            if (serviceDetails[serviceId]) {
-                const service = serviceDetails[serviceId];
-                modalBody.innerHTML = `
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">${service.title}</h2>
-                    <p class="text-industrial-400 mb-8">${service.description}</p>
-                    ${service.content}
-                    <div class="pt-6 border-t border-slate-700 mt-8">
-                        <a href="#quote" onclick="closeServiceModal()" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-lg transition-all">
-                            Request Quote for This Service
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                    </div>
-                `;
-            }
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // CLOSE SERVICE MODAL FUNCTION
-        function closeServiceModal() {
-            const modal = document.getElementById('serviceModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        document.getElementById('serviceModal').addEventListener('click', function(e) {
-            if (e.target === this) closeServiceModal();
-        });
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeServiceModal();
-        });
-
-        // FORM SUBMISSION
-        const form = document.getElementById('enquiryForm');
-        const successMsg = document.getElementById('successMessage');
-        const btn = document.getElementById('submitBtn');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            btn.innerHTML = "Sending...";
-            btn.disabled = true;
-
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    form.style.display = "none";
-                    successMsg.classList.remove("hidden");
-                } else {
-                    alert(json.message);
-                    btn.innerHTML = "Try Again";
-                    btn.disabled = false;
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                alert("Something went wrong!");
-                btn.innerHTML = "Try Again";
-                btn.disabled = false;
-            });
-        });
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
-
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-slate-900/95', 'shadow-lg'
-    <!-- WHATSAPP CHAT WIDGET -->
-    <div id="whatsappWidget" class="fixed bottom-6 right-6 z-40">
-        <button onclick="toggleWhatsappChat()" class="whatsapp-button w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110 relative group">
+    <!-- WHATSAPP WIDGET - FIXED POSITION -->
+    <div class="whatsapp-widget-container">
+        <button onclick="toggleWhatsappChat()" class="whatsapp-button w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110 relative group">
             <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378l-.361.214-3.741-.982.998 3.645-.235.364a9.864 9.864 0 001.51 5.748c.995 1.76 2.41 3.286 4.079 4.433 1.671 1.147 3.612 1.809 5.653 1.809a9.87 9.87 0 005.031-1.378l.361-.214 3.741.982-.998-3.645.235-.364a9.864 9.864 0 00-1.51-5.748c-.995-1.76-2.41-3.286-4.079-4.433a9.873 9.873 0 00-5.653-1.809Z"/>
             </svg>
-            
-            <!-- Floating Badge -->
-            <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center animate-pulse">1</span>
-            
-            <!-- Tooltip -->
-            <span class="absolute right-20 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">1</span>
+            <span class="absolute right-20 bottom-2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 Chat with us!
             </span>
         </button>
 
-        <!-- WhatsApp Chat Box -->
-        <div id="whatsappChat" class="hidden absolute bottom-20 right-0 w-96 bg-white rounded-2xl shadow-2xl overflow-hidden" style="max-height: 600px;">
-            <!-- Chat Header -->
+        <!-- WHATSAPP CHAT BOX -->
+        <div id="whatsappChat" class="whatsapp-chat-box hidden absolute bottom-20 right-0 w-96 bg-white rounded-2xl shadow-2xl overflow-hidden z-30">
+            <!-- Header -->
             <div class="bg-gradient-to-r from-green-500 to-green-600 p-4 text-white">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
@@ -1184,29 +950,28 @@
                 </div>
             </div>
 
-            <!-- Chat Messages -->
-            <div class="p-4 bg-gray-50 space-y-3" style="max-height: 300px; overflow-y: auto;">
+            <!-- Messages -->
+            <div class="p-4 bg-gray-50 space-y-3" style="max-height: 250px; overflow-y: auto;">
                 <div class="flex gap-2">
                     <div class="w-8 h-8 bg-green-500 rounded-full flex-shrink-0"></div>
-                    <div class="bg-green-100 rounded-lg p-3 max-w-xs">
-                        <p class="text-gray-800 text-sm font-medium">Faridabad Lab</p>
-                        <p class="text-gray-700 text-sm mt-1">Hi! 👋 How can we help with your sourcing needs?</p>
+                    <div class="bg-green-100 rounded-lg p-3">
+                        <p class="text-gray-800 text-sm font-semibold">Faridabad Lab</p>
+                        <p class="text-gray-700 text-sm mt-1">Hi! 👋 How can we help?</p>
                         <p class="text-gray-500 text-xs mt-2">10:30 AM</p>
                     </div>
                 </div>
-                
                 <div class="flex gap-2">
                     <div class="w-8 h-8 bg-green-500 rounded-full flex-shrink-0"></div>
-                    <div class="bg-green-100 rounded-lg p-3 max-w-xs">
-                        <p class="text-gray-700 text-sm">Get quotes for CNC parts, castings, forgings & more ✨</p>
+                    <div class="bg-green-100 rounded-lg p-3">
+                        <p class="text-gray-700 text-sm">Get quotes for CNC, casting, forging & more ✨</p>
                         <p class="text-gray-500 text-xs mt-2">10:31 AM</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Chat Input -->
+            <!-- Action Button -->
             <div class="border-t border-gray-200 p-4 bg-white">
-                <a href="https://wa.me/919818025033?text=Hi%20Faridabad%20Lab%2C%20I%20need%20help%20with%20sourcing%20industrial%20parts%20like%20CNC%20machining%2C%20casting%2C%20forging%20and%20more." 
+                <a href="https://wa.me/919818025033?text=Hi%20Faridabad%20Lab%2C%20I%20need%20help%20with%20sourcing%20industrial%20parts%20like%20CNC%20machining%2C%20casting%2C%20and%20forging." 
                    target="_blank" 
                    rel="noopener noreferrer"
                    class="block w-full px-4 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-lg transition-all text-center text-sm">
@@ -1216,40 +981,185 @@
         </div>
     </div>
 
-    <style>
-        .whatsapp-button {
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @media (max-width: 640px) {
-            #whatsappChat {
-                width: 90vw !important;
-                right: auto !important;
-                left: 5vw;
-            }
-        }
-    </style>
-
     <script>
-        function toggleWhatsappChat() {
-            const chatBox = document.getElementById('whatsappChat');
-            chatBox.classList.toggle('hidden');
+        // SERVICE MODAL FUNCTIONS
+        const serviceDetails = {
+            cnc: {
+                title: 'CNC Machining Services',
+                description: 'Precision CNC milling and turning for complex geometries.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">Service Overview</h3>
+                <p class="text-industrial-400 mb-6">We specialize in precision CNC milling and turning services for components requiring tight tolerances and complex geometries.</p>
+                <h3 class="text-2xl font-bold text-white mb-4">Key Capabilities</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> Multi-axis machining (3, 4, 5-axis)</li>
+                    <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> Tight tolerances: ±0.01mm</li>
+                    <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> Materials: Stainless steel, aluminum, brass, titanium</li>
+                    <li class="flex items-start gap-3"><span class="text-blue-400 font-bold">✓</span> Surface finish: Ra 0.4 to Ra 3.2 microns</li>
+                </ul>`
+            },
+            casting: {
+                title: 'Casting Solutions',
+                description: 'Sand, investment, and die casting for metal components.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">Casting Methods</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li><strong>Sand Casting:</strong> Large castings with design flexibility</li>
+                    <li><strong>Investment Casting:</strong> Precision with superior finish</li>
+                    <li><strong>Die Casting:</strong> High-volume for aluminum and zinc</li>
+                </ul>`
+            },
+            forging: {
+                title: 'Forging Services',
+                description: 'Hot and cold forging for high-strength components.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">Capabilities</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li>✓ Hot and cold forging</li>
+                    <li>✓ Materials: Carbon steel, alloy steel, stainless steel, titanium</li>
+                    <li>✓ 10-20% higher strength than castings</li>
+                </ul>`
+            },
+            inspection: {
+                title: 'Technical Inspection Services',
+                description: 'Quality verification and dimensional inspection.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">Services</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li>✓ Dimensional inspection (CMM)</li>
+                    <li>✓ Visual inspection</li>
+                    <li>✓ NDT Testing</li>
+                    <li>✓ Hardness testing</li>
+                </ul>`
+            },
+            vendor: {
+                title: 'Vendor Management Services',
+                description: 'Complete SPOC for vendor coordination.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">What We Manage</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li>✓ Vendor network of 50+ suppliers</li>
+                    <li>✓ Multi-quote comparison</li>
+                    <li>✓ Quality assurance</li>
+                    <li>✓ Save 15-30% on costs</li>
+                </ul>`
+            },
+            sheetmetal: {
+                title: 'Sheet Metal Fabrication',
+                description: 'Laser cutting, bending, and welding.',
+                content: `<h3 class="text-2xl font-bold text-white mb-4">Services</h3>
+                <ul class="space-y-3 text-industrial-400 mb-6">
+                    <li>✓ Laser cutting</li>
+                    <li>✓ CNC bending (±1mm accuracy)</li>
+                    <li>✓ Welding & assembly</li>
+                    <li>✓ Finishing services</li>
+                </ul>`
+            }
+        };
+
+        function openServiceModal(serviceId) {
+            const modal = document.getElementById('serviceModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            if (serviceDetails[serviceId]) {
+                const service = serviceDetails[serviceId];
+                modalBody.innerHTML = `
+                    <h2 class="text-3xl font-bold text-white mb-2">${service.title}</h2>
+                    <p class="text-industrial-400 mb-8">${service.description}</p>
+                    ${service.content}
+                    <div class="pt-6 border-t border-slate-700 mt-8">
+                        <a href="#quote" onclick="closeServiceModal()" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-lg">
+                            Request Quote
+                        </a>
+                    </div>
+                `;
+            }
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Close chat when clicking outside
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('serviceModal').addEventListener('click', function(e) {
+            if (e.target === this) closeServiceModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeServiceModal();
+        });
+
+        // WHATSAPP WIDGET
+        function toggleWhatsappChat() {
+            document.getElementById('whatsappChat').classList.toggle('hidden');
+        }
+
         document.addEventListener('click', function(e) {
-            const widget = document.getElementById('whatsappWidget');
+            const widget = document.querySelector('.whatsapp-widget-container');
             const chatBox = document.getElementById('whatsappChat');
-            if (!widget.contains(e.target) && !chatBox.classList.contains('hidden')) {
+            if (widget && !widget.contains(e.target) && !chatBox.classList.contains('hidden')) {
                 chatBox.classList.add('hidden');
             }
         });
+
+        // FORM SUBMISSION
+        const form = document.getElementById('enquiryForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btn.innerHTML = "Sending...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const json = JSON.stringify(Object.fromEntries(formData));
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: json
+            })
+            .then(async response => {
+                if (response.status === 200) {
+                    form.style.display = 'none';
+                    document.getElementById('successMessage').classList.remove('hidden');
+                } else {
+                    alert('Error submitting form');
+                    btn.innerHTML = 'Try Again';
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert("Something went wrong!");
+                btn.innerHTML = "Try Again";
+                btn.disabled = false;
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('mobile-menu')?.classList.add('hidden');
+                }
+            });
+        });
+
+        // NAVBAR SCROLL
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-slate-900/95', 'shadow-lg');
+                nav.classList.remove('glass-panel');
+            } else {
+                nav.classList.remove('bg-slate-900/95', 'shadow-lg');
+                nav.classList.add('glass-panel');
+            }
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
