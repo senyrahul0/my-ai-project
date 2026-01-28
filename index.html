@@ -3,177 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faridabad Lab - Industrial Sourcing Partner | Critical Parts Procurement</title>
-    <meta name="description" content="Expert sourcing for critical manufacturing parts. We handle complex procurement while you focus on production. Located in Sector 24, Faridabad.">
-    
+    <title>Faridabad Lab - Industrial Sourcing Platform</title>
+    <meta name="description" content="Critical parts sourcing for manufacturing. Get the best quotation within 24 hours and save up to 30%.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Roboto', 'monospace'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         industrial: {
                             900: '#0f172a',
                             800: '#1e293b',
                             700: '#334155',
-                            accent: '#3b82f6',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
                         }
                     }
                 }
             }
         }
     </script>
-
-    <style>
-        body { background-color: #0f172a; color: #e2e8f0; }
-        .metallic-text {
-            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-        .input-industrial {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid #475569;
-            color: #e2e8f0;
-        }
-        .gear-spin { animation: spin 30s linear infinite; transform-origin: center; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    </style>
 </head>
-<body class="antialiased overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 glass-panel border-b border-slate-700/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12">
-                        <svg viewBox="0 0 100 100" class="w-full h-full">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="#3b82f6" stroke-width="2"/>
-                            <text x="50" y="60" text-anchor="middle" fill="#e2e8f0" font-size="30" font-weight="bold">FL</text>
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-white uppercase tracking-tight">Faridabad Lab</h1>
-                        <p class="text-[10px] text-blue-400 tracking-widest uppercase font-bold">Industrial Sourcing Partner</p>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
-                    <a href="#quote" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md shadow-lg shadow-blue-900/50">Request Quotation</a>
-                </div>
-            </div>
+<body class="bg-industrial-900 text-gray-200 font-sans">
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center text-center px-6">
+    <div class="max-w-3xl">
+        <h1 class="text-5xl font-bold mb-6">Critical Parts. Competitive Prices. Guaranteed.</h1>
+        <p class="text-xl text-industrial-400 leading-relaxed">
+            Share your part requirements and receive the most competitive quotation within
+            <span class="text-white font-semibold">24 hours</span>.
+            <span class="block mt-2 text-blue-400 font-semibold">Save up to 30% on procurement costs.</span>
+        </p>
+        <a href="#quote" class="mt-10 inline-block bg-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-700">
+            Get Free Quote Now
+        </a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 bg-industrial-800 px-6">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8">About Us</h2>
+        <p class="mb-4 text-industrial-300">
+            Faridabad Lab is built by mechanical engineering professionals to simplify industrial parts sourcing for manufacturing companies. We act as your Single Point of Contact (SPOC) to understand technical drawings, material requirements, tolerances, and ensure the right supplier is selected for your job.
+        </p>
+        <p class="text-industrial-300">
+            With strong vendor understanding, quality control checks, and practical manufacturing knowledge, we help you procure critical components faster, more reliably, and at the best possible price without the hassle of dealing with multiple vendors.
+        </p>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
+        <div>
+            <h3 class="text-2xl font-bold mb-4">01 Share Part Details</h3>
+            <p class="text-industrial-400">Upload drawings, material, quantity and tolerance requirements.</p>
         </div>
-    </nav>
-
-    <section class="relative min-h-screen flex items-center justify-center pt-20">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#334155 1px, transparent 0); background-size: 40px 40px;"></div>
-        <div class="relative max-w-7xl mx-auto px-4 text-center space-y-8">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
-                <span class="metallic-text">Critical Sourcing.</span><br>
-                <span class="text-white">Expert Solutions.</span>
-            </h1>
-            <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                Specialized in procuring complex industrial parts that are difficult to inspect or source. We act as your <span class="text-white font-bold">Single Point of Contact</span> to ensure the best market price and QC standards.
+        <div>
+            <h3 class="text-2xl font-bold mb-4">02 Intelligent Comparison</h3>
+            <p class="text-industrial-400">
+                We analyze multiple supplier quotations based on price, lead time, quality history, and manufacturing capability.
             </p>
-            <div class="flex justify-center gap-4">
-                <a href="#quote" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transform transition hover:-translate-y-1">Get Started</a>
-                <a href="tel:+919818025033" class="px-8 py-4 border border-slate-600 text-white font-bold rounded-lg hover:bg-slate-800 transition">Call Now</a>
-            </div>
         </div>
-    </section>
+        <div>
+            <h3 class="text-2xl font-bold mb-4">03 Get Best Price</h3>
+            <p class="text-industrial-400">Receive the best quotation with QC assurance and single point coordination.</p>
+        </div>
+    </div>
+</section>
 
-    <section id="about" class="py-24 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-white mb-6">Your Technical SPOC for Manufacturing</h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-6">
-                        Manufacturing units often face challenges with "Critical Parts" that cannot be verified or sourced easily. **Faridabad Lab** provides a smart solution—you stand at the front, while we manage the entire backend sourcing network.
-                    </p>
-                    <p class="text-slate-400 text-lg leading-relaxed">
-                        Chunki humein Mechanical Engineering ki gehri samajh hai, hum aapke technical drawings aur tolerances ko samajhte hain. Hum aapke liye market se best pricing aur quality negotiate karte hain, taaki aapko har part par sabse sasti aur behtareen deal mide.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="p-6 glass-panel rounded-xl">
-                        <div class="text-3xl font-bold text-blue-500 mb-2">Sector 24</div>
-                        <p class="text-sm text-slate-400">Located in the Heart of Faridabad Industrial Hub</p>
-                    </div>
-                    <div class="p-6 glass-panel rounded-xl">
-                        <div class="text-3xl font-bold text-blue-500 mb-2">99.2%</div>
-                        <p class="text-sm text-slate-400">Quality Check Pass Rate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- QUOTE FORM -->
+<section id="quote" class="py-24 bg-industrial-800 px-6">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8">Request a Smart Quote</h2>
+        <form class="space-y-6">
+            <input type="text" placeholder="Company Name" class="w-full p-3 rounded bg-industrial-900 border border-industrial-600">
+            <input type="email" placeholder="Email Address" class="w-full p-3 rounded bg-industrial-900 border border-industrial-600">
+            <input type="text" placeholder="Part Description" class="w-full p-3 rounded bg-industrial-900 border border-industrial-600">
+            <input type="number" placeholder="Quantity" class="w-full p-3 rounded bg-industrial-900 border border-industrial-600">
+            <textarea placeholder="Tolerance / Additional Requirements" class="w-full p-3 rounded bg-industrial-900 border border-industrial-600"></textarea>
+            <button class="w-full bg-blue-600 py-4 rounded font-semibold hover:bg-blue-700">
+                Get Best Quotation Now
+            </button>
+        </form>
+    </div>
+</section>
 
-    <section id="quote" class="py-24">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="glass-panel p-8 rounded-3xl shadow-2xl">
-                <h2 class="text-3xl font-bold text-white text-center mb-8">Part Enquiry Form</h2>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Company Name" class="w-full px-4 py-3 rounded-lg input-industrial outline-none focus:border-blue-500" required>
-                        <input type="text" placeholder="Contact Person" class="w-full px-4 py-3 rounded-lg input-industrial outline-none focus:border-blue-500" required>
-                    </div>
-                    <input type="text" placeholder="Part Name / Description" class="w-full px-4 py-3 rounded-lg input-industrial outline-none focus:border-blue-500" required>
-                    <textarea rows="4" placeholder="Technical Specifications (Material, Tolerance, Heat Treatment, etc.)" class="w-full px-4 py-3 rounded-lg input-industrial outline-none focus:border-blue-500"></textarea>
-                    <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition shadow-lg shadow-blue-900/50">Request Quotation Analysis</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black/40 pt-16 pb-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 mb-12">
-            <div>
-                <h3 class="text-xl font-bold text-white mb-4">FARIDABAD LAB</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Mechanical Expertise meeting Procurement Efficiency. We solve the complexity of sourcing critical parts for the modern industry.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-                <ul class="text-sm text-slate-400 space-y-2">
-                    <li><a href="#about" class="hover:text-blue-400 transition">About Us</a></li>
-                    <li><a href="#quote" class="hover:text-blue-400 transition">Request Sourcing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-semibold mb-4">Contact Details</h4>
-                <ul class="text-sm text-slate-400 space-y-3">
-                    <li class="flex items-center gap-2">
-                        <span class="text-blue-400">📞</span> +91 9818025033
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <span class="text-blue-400">📞</span> +91 9743798147
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-blue-400">📍</span> 
-                        Sector 24, Industrial Area,<br>Faridabad, Haryana 121005
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center text-xs text-slate-600 border-t border-slate-800 pt-8">
-            &copy; 2026 Faridabad Lab. Built for Manufacturing Excellence.
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer class="py-12 text-center border-t border-industrial-700">
+    <p class="mb-2">Contact: +91 9818025033 | +91 9743798147</p>
+    <p>Sector 24, Faridabad, Haryana 121005</p>
+    <p class="text-sm text-industrial-500 mt-4">© 2026 Faridabad Lab</p>
+</footer>
 
 </body>
 </html>
