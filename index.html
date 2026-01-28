@@ -139,6 +139,22 @@
             border-color: #3b82f6;
             box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
         }
+
+        .client-card {
+            transition: all 0.3s ease;
+        }
+        .client-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            background: rgba(30, 41, 59, 0.9);
+        }
+        .client-card svg {
+            filter: grayscale(100%) opacity(0.7);
+            transition: all 0.3s ease;
+        }
+        .client-card:hover svg {
+            filter: grayscale(0%) opacity(1);
+        }
         
         .modal {
             display: none;
@@ -271,6 +287,7 @@
 
                 <div class="hidden md:flex items-center gap-8">
                     <a href="#services" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">Services</a>
+                    <a href="#clients" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">Clients</a>
                     <a href="#about" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">About</a>
                     <a href="#quote" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-md transition-all shadow-lg shadow-blue-900/50 hover:shadow-blue-900/80">
                         Request Quote
@@ -290,6 +307,7 @@
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-800">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#services" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">Services</a>
+                <a href="#clients" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">Clients</a>
                 <a href="#about" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">About</a>
                 <a href="#quote" class="block px-3 py-2 text-base font-bold text-blue-400 hover:text-blue-300">Request Quote</a>
             </div>
@@ -477,86 +495,134 @@
         </div>
     </section>
 
-    <div id="serviceModal" class="modal">
-        <div class="modal-content glass-panel-dark rounded-3xl">
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
-    <section id="about" class="py-24 bg-slate-900/50 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-cyan-600/5"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-6">
-                    <div class="inline-block px-3 py-1 text-xs font-bold tracking-wider text-blue-400 uppercase bg-blue-900/20 rounded-full border border-blue-800/50">
-                        About Us
-                    </div>
-                    <h2 class="text-4xl font-bold text-white leading-tight">
-                        Engineering-Driven<br>
-                        <span class="gradient-text">Procurement Excellence</span>
-                    </h2>
-                    
-                    <div class="space-y-4 text-industrial-300 leading-relaxed">
-                        <p>
-                            Founded by a <strong class="text-white">Mechanical Engineer</strong>, Faridabad Lab bridges the gap between complex manufacturing needs and reliable supply chains. We understand that sourcing critical parts with intricate tolerances requires more than just a vendor list—it demands technical expertise.
-                        </p>
-                        <p>
-                            As your <strong class="text-white">Single Point of Contact (SPOC)</strong>, we eliminate the coordination headache between multiple suppliers. Whether it's a CNC-machined component with micron-level tolerances or a specialized casting requiring specific metallurgical properties, we handle the technical validation so you don't have to.
-                        </p>
-                        <p>
-                            Based in the industrial hub of <strong class="text-white">Sector 24, Faridabad</strong>, we leverage our deep understanding of mechanical engineering principles to source parts that meet your exact specifications, every single time.
-                        </p>
-                    </div>
-
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800 rounded-lg border border-slate-700">
-                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                            </svg>
-                            <span class="text-sm font-medium text-white">SPOC Model</span>
-                        </div>
-                        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800 rounded-lg border border-slate-700">
-                            <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                            </svg>
-                            <span class="text-sm font-medium text-white">Complex Tolerances</span>
-                        </div>
-                    </div>
+    <section id="clients" class="py-24 relative bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Trusted by Industry Leaders</h2>
+                <p class="text-industrial-400 max-w-2xl mx-auto">We work with the top manufacturing giants of Faridabad and NCR.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-12 w-auto" viewBox="0 0 200 60" fill="currentColor">
+                        <text x="100" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#eab308">ESCORTS</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                     <svg class="h-12 w-auto" viewBox="0 0 100 60" fill="currentColor">
+                        <rect x="5" y="10" width="90" height="40" rx="5" fill="#f59e0b"/>
+                        <text x="50" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="black">JCB</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 160 40" fill="currentColor">
+                        <text x="80" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#ef4444">HAVELLS</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 180 40" fill="currentColor">
+                        <text x="90" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#fbbf24">Whirlpool</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                     <svg class="h-12 w-auto" viewBox="0 0 120 50" fill="currentColor">
+                        <text x="60" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="32" fill="#3b82f6">JBM</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-8 w-auto" viewBox="0 0 150 40" fill="currentColor">
+                        <text x="75" y="30" text-anchor="middle" font-family="Times New Roman, serif" font-weight="bold" font-size="28" fill="white" font-style="italic">Lakhani</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 100 40" fill="currentColor">
+                        <text x="50" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="34" fill="#ef4444">ACE</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#3b82f6">IMPERIAL</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 150 40" fill="currentColor">
+                        <text x="75" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="white">Talbros</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 120 40" fill="currentColor">
+                        <text x="60" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="26" fill="#10b981">ELOFIC</text>
+                    </svg>
+                </div>
+                 <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#f97316">SADHU FORGING</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#06b6d4">INDO AUTOTECH</text>
+                    </svg>
+                </div>
+                 <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#a855f7">RICHA IND</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#e2e8f0">SUPER SCREWS</text>
+                    </svg>
+                </div>
+                <div class="client-card client-logo bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center justify-center">
+                    <svg class="h-10 w-auto" viewBox="0 0 200 40" fill="currentColor">
+                        <text x="100" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#64748b">NEW ALLENBERRY</text>
+                    </svg>
                 </div>
 
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-3xl"></div>
-                    <div class="relative glass-panel rounded-3xl p-8 border border-slate-700 shadow-2xl">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-4">
-                                <div class="h-32 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold gradient-text">99.2%</div>
-                                        <div class="text-xs text-industrial-500 uppercase">QC Pass Rate</div>
-                                    </div>
-                                </div>
-                                <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center relative overflow-hidden">
-                                    <svg class="w-24 h-24 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="space-y-4 mt-8">
-                                <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
-                                    <svg class="w-24 h-24 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                                    </svg>
-                                </div>
-                                <div class="h-32 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <div class="text-3xl font-bold text-white">24h</div>
-                                        <div class="text-xs text-industrial-500 uppercase">Response</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-sm text-industrial-400">And 50+ other MSMEs in Sector 24, 25 & 58</p>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-industrial-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How It <span class="gradient-text">Works</span></h2>
+                <p class="text-industrial-400 max-w-2xl mx-auto">Simple 3-step process from inquiry to delivery</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-blue-400 mx-auto mb-6 border-2 border-blue-500">
+                        1
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Submit Your Requirements</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        Share your part specifications, technical drawings, material requirements, and quantity through our simple form.
+                    </p>
+                </div>
+
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-cyan-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-cyan-400 mx-auto mb-6 border-2 border-cyan-500">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Get Competitive Quotes</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        Our team connects with vetted vendors and provides you with the best quotations within 24 hours.
+                    </p>
+                </div>
+
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-green-400 mx-auto mb-6 border-2 border-green-500">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Quality Assured Delivery</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        We coordinate production, perform quality checks, and ensure timely delivery of your parts.
+                    </p>
                 </div>
             </div>
         </div>
