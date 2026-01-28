@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind Config -->
     <script>
@@ -41,11 +41,26 @@
                         'spin-slow': 'spin 20s linear infinite',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.4s ease-out',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
                         }
                     }
                 }
@@ -75,6 +90,12 @@
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .glass-panel-dark {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
         }
         
         .input-industrial {
@@ -112,9 +133,108 @@
             background-size: 60px 60px;
         }
         
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: #3b82f6;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 1200px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 20px;
+            animation: scaleIn 0.4s ease-out;
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .process-step::after {
+                content: '↓';
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: -2rem;
+                transform: translateX(-50%);
+            }
         }
     </style>
 </head>
@@ -134,13 +254,11 @@
                                     <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
                                 </linearGradient>
                             </defs>
-                            <!-- Outer Gear -->
                             <path d="M50 10 L55 20 L65 18 L70 28 L80 30 L80 40 L90 45 L85 55 L90 65 L80 70 L78 80 L68 82 L60 90 L50 85 L40 90 L32 82 L22 80 L20 70 L10 65 L15 55 L10 45 L20 40 L20 30 L30 28 L35 18 L45 20 Z" 
                                   fill="none" 
                                   stroke="url(#logoGradient)" 
                                   stroke-width="3"
                                   class="gear-spin"/>
-                            <!-- Inner Lab Flask -->
                             <path d="M45 35 L55 35 L55 45 L65 65 Q70 75 60 80 L40 80 Q30 75 35 65 L45 45 Z" 
                                   fill="rgba(59, 130, 246, 0.2)" 
                                   stroke="#3b82f6" 
@@ -210,7 +328,7 @@
 
             <!-- Sub-heading -->
             <p class="text-xl md:text-2xl text-industrial-400 max-w-2xl mx-auto mb-12 font-light">
-                Get competitive quotations from Us.
+                Get competitive quotations from vetted vendors. Your single point of contact for precision manufacturing.
             </p>
 
             <!-- CTA Buttons -->
@@ -273,56 +391,121 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Services</h2>
-                <p class="text-industrial-400 max-w-2xl mx-auto">Specialized procurement solutions for complex industrial requirements</p>
+                <p class="text-industrial-400 max-w-2xl mx-auto">Specialized procurement solutions for complex industrial requirements. Click any service to learn more.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- CNC Machining -->
-                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('cnc')">
                     <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">CNC Machining</h3>
-                    <p class="text-industrial-400 text-sm leading-relaxed">Precision CNC milling and turning for complex geometries with tight tolerances.</p>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Precision CNC milling and turning for complex geometries with tight tolerances.</p>
+                    <div class="flex items-center text-blue-400 text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Casting -->
-                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('casting')">
                     <div class="w-14 h-14 bg-cyan-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Casting</h3>
-                    <p class="text-industrial-400 text-sm leading-relaxed">Sand casting, investment casting, and die casting for metal components.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Casting Solutions</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Sand casting, investment casting, and die casting for metal components.</p>
+                    <div class="flex items-center text-cyan-400 text-sm font-semibold">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Forging -->
-                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('forging')">
                     <div class="w-14 h-14 bg-indigo-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Forging</h3>
-                    <p class="text-industrial-400 text-sm leading-relaxed">Hot and cold forging for high-strength components demanding structural integrity.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Forging Services</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Hot and cold forging for high-strength components demanding structural integrity.</p>
+                    <div class="flex items-center text-indigo-400 text-sm font-semibold">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Technical Inspection -->
-                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('inspection')">
                     <div class="w-14 h-14 bg-emerald-600/20 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Part Inspection</h3>
-                    <p class="text-industrial-400 text-sm leading-relaxed">Technical part inspection for critical tolerances and quality verification.</p>
+                    <h3 class="text-xl font-bold text-white mb-2">Technical Inspection</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Comprehensive quality verification and dimensional inspection services.</p>
+                    <div class="flex items-center text-emerald-400 text-sm font-semibold">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Vendor Management -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('vendor')">
+                    <div class="w-14 h-14 bg-purple-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Vendor Management</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Complete SPOC service for all your manufacturing vendor coordination.</p>
+                    <div class="flex items-center text-purple-400 text-sm font-semibold">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Sheet Metal -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 cursor-pointer" onclick="openServiceModal('sheetmetal')">
+                    <div class="w-14 h-14 bg-orange-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Sheet Metal Fabrication</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed mb-4">Laser cutting, bending, and welding for precision sheet metal components.</p>
+                    <div class="flex items-center text-orange-400 text-sm font-semibold">
+                        Learn More 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Service Modals -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content glass-panel-dark rounded-3xl">
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
     <!-- About Us Section -->
     <section id="about" class="py-24 bg-slate-900/50 relative overflow-hidden">
@@ -404,6 +587,51 @@
         </div>
     </section>
 
+    <!-- How It Works Section -->
+    <section class="py-24 bg-industrial-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How It <span class="gradient-text">Works</span></h2>
+                <p class="text-industrial-400 max-w-2xl mx-auto">Simple 3-step process from inquiry to delivery</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                <!-- Step 1 -->
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-blue-400 mx-auto mb-6 border-2 border-blue-500">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Submit Your Requirements</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        Share your part specifications, technical drawings, material requirements, and quantity through our simple form.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-cyan-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-cyan-400 mx-auto mb-6 border-2 border-cyan-500">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Get Competitive Quotes</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        Our team connects with vetted vendors and provides you with the best quotations within 24 hours.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step glass-panel p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center text-3xl font-bold text-green-400 mx-auto mb-6 border-2 border-green-500">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Quality Assured Delivery</h3>
+                    <p class="text-industrial-400 leading-relaxed">
+                        We coordinate production, perform quality checks, and ensure timely delivery of your parts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quote Form Section -->
     <section id="quote" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -418,11 +646,9 @@
                         <p class="text-industrial-400">Get competitive quotations within 24 hours</p>
                     </div>
 
-                    <!-- Make.com Webhook Ready Form -->
-                    <form action="https://hook.make.com/YOUR_WEBHOOK_URL_HERE" method="POST" enctype="application/x-www-form-urlencoded" class="space-y-6" id="enquiryForm">
+                    <form action="mailto:rahulsen.yadav@gmail.com" method="POST" enctype="multipart/form-data" class="space-y-6" id="enquiryForm">
                         
                         <div class="grid md:grid-cols-2 gap-6">
-                            <!-- Company Name -->
                             <div class="space-y-2">
                                 <label for="company" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Company Name *</label>
                                 <input type="text" id="company" name="company" required 
@@ -430,7 +656,6 @@
                                        placeholder="Your Company Name">
                             </div>
 
-                            <!-- Email -->
                             <div class="space-y-2">
                                 <label for="email" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Email Address *</label>
                                 <input type="email" id="email" name="email" required 
@@ -439,7 +664,22 @@
                             </div>
                         </div>
 
-                        <!-- Part Description -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="contact_person" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Contact Person *</label>
+                                <input type="text" id="contact_person" name="contact_person" required 
+                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                       placeholder="Your Name">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="phone" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                       placeholder="+91 XXXXX XXXXX">
+                            </div>
+                        </div>
+
                         <div class="space-y-2">
                             <label for="part_description" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Part Description *</label>
                             <input type="text" id="part_description" name="part_description" required 
@@ -447,7 +687,6 @@
                                    placeholder="e.g., Stainless Steel CNC Shaft, Forged Gear, Cast Housing">
                         </div>
 
-                        <!-- Technical Specifications -->
                         <div class="space-y-2">
                             <label for="specifications" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Technical Specifications & Tolerances</label>
                             <textarea id="specifications" name="specifications" rows="4" 
@@ -455,7 +694,6 @@
                                       placeholder="Material grade, dimensions, tolerance requirements, surface finish, quantity needed, delivery timeline..."></textarea>
                         </div>
 
-                        <!-- Material & Quantity Row -->
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label for="material" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Material Preference</label>
@@ -479,11 +717,28 @@
                             </div>
                         </div>
 
-                        <!-- Hidden Tags for Make.com (optional) -->
+                        <!-- File Upload Section -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Technical Drawings / CAD Files</label>
+                            <div class="relative">
+                                <input type="file" id="fileUpload" name="drawings" multiple accept=".pdf,.dwg,.dxf,.step,.stp,.igs,.iges,.stl,.jpg,.jpeg,.png" 
+                                       class="hidden" onchange="handleFileSelect(event)">
+                                <label for="fileUpload" 
+                                       class="w-full px-4 py-8 rounded-lg input-industrial border-2 border-dashed border-slate-600 hover:border-blue-500 flex flex-col items-center justify-center cursor-pointer transition-all group">
+                                    <svg class="w-12 h-12 text-slate-600 group-hover:text-blue-400 mb-3 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                    </svg>
+                                    <span class="text-industrial-400 group-hover:text-blue-400 font-medium transition-colors">Click to upload or drag and drop</span>
+                                    <span class="text-xs text-industrial-600 mt-2">PDF, DWG, DXF, STEP, STL, IGES or Images (Max 10MB per file)</span>
+                                </label>
+                            </div>
+                            <div id="fileList" class="mt-3 space-y-2"></div>
+                        </div>
+
                         <input type="hidden" name="source" value="Website Enquiry">
                         <input type="hidden" name="timestamp" id="timestamp">
+                        <input type="hidden" name="files_data" id="files_data">
 
-                        <!-- Submit Button -->
                         <button type="submit" 
                                 class="w-full py-4 mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-lg rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 group">
                             <span>Submit Enquiry</span>
@@ -497,7 +752,6 @@
                         </p>
                     </form>
 
-                    <!-- Success Message (Hidden by default) -->
                     <div id="successMessage" class="hidden text-center py-12">
                         <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                             <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -517,7 +771,6 @@
     <footer class="border-t border-slate-800 bg-black/40 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Company Info -->
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10">
@@ -550,19 +803,17 @@
                     </div>
                 </div>
 
-                <!-- Services -->
                 <div>
                     <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Services</h4>
                     <ul class="space-y-3 text-sm text-industrial-400">
-                        <li><a href="#services" class="hover:text-blue-400 transition-colors">CNC Machining</a></li>
-                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Casting Solutions</a></li>
-                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Forging Services</a></li>
-                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Technical Inspection</a></li>
-                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Vendor Management</a></li>
+                        <li><a href="#" onclick="openServiceModal('cnc'); return false;" class="hover:text-blue-400 transition-colors">CNC Machining</a></li>
+                        <li><a href="#" onclick="openServiceModal('casting'); return false;" class="hover:text-blue-400 transition-colors">Casting Solutions</a></li>
+                        <li><a href="#" onclick="openServiceModal('forging'); return false;" class="hover:text-blue-400 transition-colors">Forging Services</a></li>
+                        <li><a href="#" onclick="openServiceModal('inspection'); return false;" class="hover:text-blue-400 transition-colors">Technical Inspection</a></li>
+                        <li><a href="#" onclick="openServiceModal('vendor'); return false;" class="hover:text-blue-400 transition-colors">Vendor Management</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
                 <div>
                     <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contact</h4>
                     <ul class="space-y-3 text-sm text-industrial-400">
@@ -586,13 +837,12 @@
                             <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
-                            <a href="mailto:info@faridabadlab.com" class="hover:text-white transition-colors">info@faridabadlab.com</a>
+                            <a href="mailto:rahulsen.yadav@gmail.com" class="hover:text-white transition-colors">rahulsen.yadav@gmail.com</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Copyright -->
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-sm text-industrial-600">&copy; 2026 Faridabad Lab. All rights reserved.</p>
                 <div class="flex gap-6 text-sm text-industrial-600">
@@ -605,48 +855,556 @@
     </footer>
 
     <script>
+        // Service Modal Data
+        const serviceData = {
+            cnc: {
+                title: "CNC Machining Services",
+                color: "blue",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>`,
+                description: "High-precision CNC machining for complex geometries and tight tolerance requirements. We source from ISO-certified vendors with state-of-the-art 3-axis, 4-axis, and 5-axis machining capabilities.",
+                capabilities: [
+                    "3-Axis, 4-Axis, and 5-Axis CNC Milling",
+                    "CNC Turning and Swiss Turning",
+                    "Precision Tolerances up to ±0.005mm",
+                    "Surface Finish Ra 0.8 to Ra 3.2",
+                    "Thread Milling and Tapping",
+                    "Complex 3D Geometries"
+                ],
+                materials: [
+                    "Aluminum Alloys (6061, 7075, 2024)",
+                    "Stainless Steel (304, 316, 17-4PH)",
+                    "Mild Steel and Tool Steel",
+                    "Brass, Bronze, Copper",
+                    "Titanium Alloys",
+                    "Engineering Plastics (PEEK, Delrin, Nylon)"
+                ],
+                applications: [
+                    "Aerospace Components",
+                    "Automotive Parts",
+                    "Medical Device Components",
+                    "Industrial Machinery Parts",
+                    "Prototype Development",
+                    "Jigs & Fixtures"
+                ]
+            },
+            casting: {
+                title: "Casting Solutions",
+                color: "cyan",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>`,
+                description: "Comprehensive casting services for complex metal components. We coordinate with specialized foundries offering sand casting, investment casting, die casting, and permanent mold casting.",
+                capabilities: [
+                    "Sand Casting (Green Sand & Resin Bonded)",
+                    "Investment Casting (Lost Wax Process)",
+                    "Die Casting (High Pressure & Low Pressure)",
+                    "Permanent Mold Casting",
+                    "Shell Mold Casting",
+                    "Centrifugal Casting"
+                ],
+                materials: [
+                    "Gray Iron and Ductile Iron",
+                    "Aluminum Alloys (A356, A380, ADC12)",
+                    "Brass & Bronze Alloys",
+                    "Stainless Steel Castings",
+                    "Carbon Steel",
+                    "Zinc Alloys (Zamak)"
+                ],
+                applications: [
+                    "Valve Bodies and Housings",
+                    "Pump Components",
+                    "Engine Parts",
+                    "Hydraulic System Components",
+                    "Industrial Machinery Frames",
+                    "Agricultural Equipment Parts"
+                ]
+            },
+            forging: {
+                title: "Forging Services",
+                color: "indigo",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
+                description: "Hot and cold forging services for high-strength components requiring superior mechanical properties. We source forged parts from vendors with advanced forging presses and heat treatment facilities.",
+                capabilities: [
+                    "Hot Forging (Open Die & Closed Die)",
+                    "Cold Forging and Precision Forging",
+                    "Upset Forging",
+                    "Ring Rolling",
+                    "Seamless Rolled Rings",
+                    "Heat Treatment Services"
+                ],
+                materials: [
+                    "Carbon Steel (AISI 1045, 4140)",
+                    "Alloy Steel (EN24, EN19)",
+                    "Stainless Steel (304, 316, 410)",
+                    "Aluminum Alloys",
+                    "Titanium (Grade 2, Grade 5)",
+                    "Nickel Alloys (Inconel, Monel)"
+                ],
+                applications: [
+                    "Crankshafts and Connecting Rods",
+                    "Gear Blanks",
+                    "Flanges and Fittings",
+                    "Fasteners and Bolts",
+                    "Hand Tools",
+                    "Mining and Oil & Gas Components"
+                ]
+            },
+            inspection: {
+                title: "Technical Inspection Services",
+                color: "emerald",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>`,
+                description: "Comprehensive quality inspection and verification services to ensure your parts meet exact specifications. We coordinate third-party inspection and provide detailed reports.",
+                capabilities: [
+                    "CMM (Coordinate Measuring Machine) Inspection",
+                    "Dimensional Verification",
+                    "Surface Roughness Testing",
+                    "Material Certification",
+                    "Hardness Testing",
+                    "Non-Destructive Testing (NDT)"
+                ],
+                materials: [
+                    "First Article Inspection (FAI)",
+                    "In-Process Quality Checks",
+                    "Final Inspection Reports",
+                    "Material Test Certificates (MTC)",
+                    "Calibration Certificates",
+                    "Compliance Documentation"
+                ],
+                applications: [
+                    "ISO 9001:2015 Compliance",
+                    "AS9100 (Aerospace)",
+                    "ASME Standards",
+                    "DIN Standards",
+                    "Custom QC Plans",
+                    "Vendor Audit Support"
+                ]
+            },
+            vendor: {
+                title: "Vendor Management (SPOC)",
+                color: "purple",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>`,
+                description: "Complete vendor management and coordination service. We act as your single point of contact, managing all communications, negotiations, and logistics with multiple vendors.",
+                capabilities: [
+                    "Multi-Vendor Coordination",
+                    "Quotation Comparison & Analysis",
+                    "Technical Drawing Review",
+                    "Procurement Strategy",
+                    "Logistics Coordination",
+                    "Quality Gate Management"
+                ],
+                materials: [
+                    "Vendor Onboarding & Vetting",
+                    "NDA & Contract Management",
+                    "Order Tracking & Updates",
+                    "Payment Coordination",
+                    "Dispute Resolution",
+                    "Performance Monitoring"
+                ],
+                applications: [
+                    "Multi-Part Projects",
+                    "Complex Assemblies",
+                    "Batch Production",
+                    "Long-term Partnerships",
+                    "Custom Manufacturing",
+                    "Supply Chain Optimization"
+                ]
+            },
+            sheetmetal: {
+                title: "Sheet Metal Fabrication",
+                color: "orange",
+                icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>`,
+                description: "Precision sheet metal fabrication services including laser cutting, CNC bending, welding, and powder coating. We source from vendors with modern sheet metal processing equipment.",
+                capabilities: [
+                    "Laser Cutting (Fiber & CO2)",
+                    "CNC Turret Punching",
+                    "CNC Press Brake Bending",
+                    "TIG, MIG, and Spot Welding",
+                    "Powder Coating & Painting",
+                    "Assembly Services"
+                ],
+                materials: [
+                    "Mild Steel (CR, HR, GP)",
+                    "Stainless Steel (304, 316)",
+                    "Aluminum Sheets",
+                    "Galvanized Steel",
+                    "Copper and Brass Sheets",
+                    "Pre-painted Sheets"
+                ],
+                applications: [
+                    "Enclosures and Cabinets",
+                    "Brackets and Mounting Plates",
+                    "HVAC Ducting",
+                    "Automotive Body Parts",
+                    "Electrical Panels",
+                    "Custom Fabricated Assemblies"
+                ]
+            }
+        };
+
+        function openServiceModal(serviceId) {
+            const service = serviceData[serviceId];
+            if (!service) return;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="relative">
+                    <!-- Close Button -->
+                    <button onclick="closeServiceModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-industrial-400 hover:text-white transition-all">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+
+                    <!-- Header -->
+                    <div class="text-center mb-8 pt-4">
+                        <div class="w-20 h-20 bg-${service.color}-600/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                ${service.icon}
+                            </svg>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">${service.title}</h2>
+                        <p class="text-industrial-400 max-w-3xl mx-auto text-lg">${service.description}</p>
+                    </div>
+
+                    <!-- Image Placeholder -->
+                    <div class="image-placeholder rounded-2xl h-64 md:h-96 mb-12 flex items-center justify-center border border-slate-700">
+                        <div class="text-center">
+                            <svg class="w-24 h-24 mx-auto mb-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                ${service.icon}
+                            </svg>
+                            <p class="text-industrial-500 font-mono text-sm">${service.title} Illustration</p>
+                        </div>
+                    </div>
+
+                    <!-- Details Grid -->
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <!-- Capabilities -->
+                        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                </svg>
+                                Capabilities
+                            </h3>
+                            <ul class="space-y-2">
+                                ${service.capabilities.map(cap => `
+                                    <li class="flex items-start gap-2 text-sm text-industrial-300">
+                                        <svg class="w-4 h-4 text-${service.color}-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        ${cap}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Materials -->
+                        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                </svg>
+                                ${serviceId === 'inspection' ? 'Inspection Types' : serviceId === 'vendor' ? 'Services' : 'Materials'}
+                            </h3>
+                            <ul class="space-y-2">
+                                ${service.materials.map(mat => `
+                                    <li class="flex items-start gap-2 text-sm text-industrial-300">
+                                        <svg class="w-4 h-4 text-${service.color}-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        ${mat}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- Applications -->
+                        <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-${service.color}-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                ${serviceId === 'inspection' ? 'Standards' : 'Applications'}
+                            </h3>
+                            <ul class="space-y-2">
+                                ${service.applications.map(app => `
+                                    <li class="flex items-start gap-2 text-sm text-industrial-300">
+                                        <svg class="w-4 h-4 text-${service.color}-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                        </svg>
+                                        ${app}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="bg-gradient-to-r from-${service.color}-600/20 to-${service.color}-800/20 rounded-2xl p-8 border border-${service.color}-500/30 text-center">
+                        <h3 class="text-2xl font-bold text-white mb-3">Need ${service.title}?</h3>
+                        <p class="text-industrial-400 mb-6 max-w-2xl mx-auto">
+                            Our team will connect you with vetted vendors and provide competitive quotations within 24 hours.
+                        </p>
+                        <button onclick="closeServiceModal(); document.getElementById('quote').scrollIntoView({behavior: 'smooth'});" 
+                                class="px-8 py-3 bg-gradient-to-r from-${service.color}-600 to-${service.color}-700 hover:from-${service.color}-500 hover:to-${service.color}-600 text-white font-bold rounded-lg transition-all shadow-lg inline-flex items-center gap-2">
+                            Request Quote Now
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('serviceModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('serviceModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeServiceModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeServiceModal();
+            }
+        });
+
         // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // Form Handling for Make.com Webhook
-        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+        // File Upload Handling
+        let selectedFiles = [];
+
+        function handleFileSelect(event) {
+            const files = Array.from(event.target.files);
+            const fileList = document.getElementById('fileList');
+            
+            files.forEach(file => {
+                // Check file size (10MB max)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                // Check if file already selected
+                if (selectedFiles.find(f => f.name === file.name && f.size === file.size)) {
+                    return;
+                }
+                
+                selectedFiles.push(file);
+            });
+            
+            updateFileList();
+        }
+
+        function updateFileList() {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            if (selectedFiles.length === 0) {
+                return;
+            }
+            
+            selectedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'flex items-center justify-between bg-slate-800/50 px-4 py-3 rounded-lg border border-slate-700';
+                
+                const fileInfo = document.createElement('div');
+                fileInfo.className = 'flex items-center gap-3';
+                
+                const fileIcon = getFileIcon(file.name);
+                const fileName = document.createElement('span');
+                fileName.className = 'text-sm text-white font-medium';
+                fileName.textContent = file.name;
+                
+                const fileSize = document.createElement('span');
+                fileSize.className = 'text-xs text-industrial-500';
+                fileSize.textContent = formatFileSize(file.size);
+                
+                fileInfo.innerHTML = fileIcon;
+                fileInfo.appendChild(fileName);
+                fileInfo.appendChild(fileSize);
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'text-red-400 hover:text-red-300 transition-colors';
+                removeBtn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                `;
+                removeBtn.onclick = () => removeFile(index);
+                
+                fileItem.appendChild(fileInfo);
+                fileItem.appendChild(removeBtn);
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updateFileList();
+        }
+
+        function getFileIcon(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const iconColors = {
+                'pdf': 'text-red-400',
+                'dwg': 'text-blue-400',
+                'dxf': 'text-blue-400',
+                'step': 'text-green-400',
+                'stp': 'text-green-400',
+                'stl': 'text-purple-400',
+                'jpg': 'text-yellow-400',
+                'jpeg': 'text-yellow-400',
+                'png': 'text-yellow-400'
+            };
+            
+            const color = iconColors[ext] || 'text-gray-400';
+            
+            return `
+                <svg class="w-5 h-5 ${color}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+            `;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Form Handling with Web3Forms + Mailto Backup
+        document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Set timestamp
-            document.getElementById('timestamp').value = new Date().toISOString();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+            `;
             
-            // Collect form data
+            // Get form data
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const timestamp = new Date().toISOString();
+            document.getElementById('timestamp').value = timestamp;
             
-            // Log for debugging (remove in production)
-            console.log('Submitting to Make.com:', data);
+            // Prepare structured email content
+            const emailContent = {
+                access_key: "762f2d0a-37b4-4d0e-a995-f3ea249816f3", // Web3Forms API Key
+                subject: `🔧 New Enquiry: ${formData.get('part_description')} - ${formData.get('company')}`,
+                from_name: "Faridabad Lab Website",
+                to: "rahulsen.yadav@gmail.com",
+                company: formData.get('company'),
+                contact_person: formData.get('contact_person'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                part_description: formData.get('part_description'),
+                material: formData.get('material') || 'Not specified',
+                quantity: formData.get('quantity') || 'Not specified',
+                specifications: formData.get('specifications') || 'Not provided',
+                files_info: selectedFiles.length > 0 ? selectedFiles.map(f => `${f.name} (${formatFileSize(f.size)})`).join(', ') : 'No files attached',
+                timestamp: new Date(timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                message: `
+NEW ENQUIRY FROM WEBSITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 COMPANY DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Company: ${formData.get('company')}
+Contact: ${formData.get('contact_person')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+
+🔩 PART REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Part: ${formData.get('part_description')}
+Material: ${formData.get('material') || 'Not specified'}
+Quantity: ${formData.get('quantity') || 'Not specified'}
+
+Specifications: 
+${formData.get('specifications') || 'Not provided'}
+
+📎 FILES: ${selectedFiles.length} file(s) uploaded
+${selectedFiles.length > 0 ? selectedFiles.map(f => `- ${f.name} (${formatFileSize(f.size)})`).join('\n') : ''}
+
+⚠️ Customer has uploaded files. Contact them to receive technical drawings.
+
+Timestamp: ${new Date(timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+                `
+            };
             
-            // Submit to Make.com
-            fetch(this.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (response.ok) {
-                    showSuccess();
+            // Store form data in localStorage for backup
+            const enquiryData = {
+                timestamp: timestamp,
+                company: formData.get('company'),
+                contact_person: formData.get('contact_person'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                part_description: formData.get('part_description'),
+                material: formData.get('material'),
+                quantity: formData.get('quantity'),
+                specifications: formData.get('specifications'),
+                files: selectedFiles.map(f => ({ name: f.name, size: f.size }))
+            };
+            
+            try {
+                localStorage.setItem(`enquiry_${timestamp}`, JSON.stringify(enquiryData));
+            } catch (e) {
+                console.error('Could not save to localStorage:', e);
+            }
+            
+            // Try Web3Forms first
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(emailContent)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log('Email sent successfully via Web3Forms');
                 } else {
-                    // If webhook returns error, still show success (Make.com usually returns 200 only if scenario ran)
-                    // But you might want to handle errors differently
-                    showSuccess();
+                    throw new Error('Web3Forms submission failed');
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // For demo purposes, show success even if webhook isn't set up
+            } catch (error) {
+                console.error('Web3Forms error, falling back to mailto:', error);
+                
+                // Fallback to mailto
+                const mailtoBody = emailContent.message;
+                const mailtoLink = `mailto:rahulsen.yadav@gmail.com?subject=${encodeURIComponent(emailContent.subject)}&body=${encodeURIComponent(mailtoBody)}`;
+                window.open(mailtoLink, '_blank');
+            }
+            
+            // Show success message
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
                 showSuccess();
-            });
+            }, 1000);
         });
 
         function showSuccess() {
@@ -655,8 +1413,6 @@
             
             form.style.display = 'none';
             successMsg.classList.remove('hidden');
-            
-            // Scroll to success message
             successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
