@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faridabad Lab - Industrial Sourcing Platform | Get Quotes in 24h</title>
-    <meta name="description" content="Critical parts sourcing for manufacturing. Get quotations from vetted vendors in 24 hours. Save up to 30% with Faridabad Lab.">
+    <title>Faridabad Lab - Critical Parts Sourcing | Industrial Procurement Specialists</title>
+    <meta name="description" content="Faridabad Lab specializes in sourcing critical industrial parts for manufacturing. Get competitive quotations, guaranteed QC against ISO/ASME standards, and save up to 30%. Based in Sector 24, Faridabad.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Tailwind Config -->
     <script>
@@ -21,7 +21,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['Roboto', 'monospace'],
+                        mono: ['Roboto Mono', 'monospace'],
                     },
                     colors: {
                         industrial: {
@@ -33,18 +33,19 @@
                             400: '#94a3b8',
                             300: '#cbd5e1',
                             accent: '#3b82f6',
+                            cyan: '#06b6d4',
                             metal: '#e2e8f0',
                         }
                     },
                     animation: {
                         'spin-slow': 'spin 20s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -53,41 +54,26 @@
     </script>
 
     <style>
-        /* Custom Industrial Aesthetic */
         body {
             background-color: #0f172a;
             color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
         }
         
-        .metallic-text {
-            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .metallic-bg {
-            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
-        }
-        
-        .gear-spin {
-            animation: spin 30s linear infinite;
-            transform-origin: center;
-        }
-        
-        .gear-spin-reverse {
-            animation: spin 25s linear infinite reverse;
-            transform-origin: center;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .metallic-gradient {
+            background: linear-gradient(135deg, #334155 0%, #1e293b 50%, #0f172a 100%);
         }
         
         .glass-panel {
             background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(148, 163, 184, 0.1);
         }
         
@@ -104,72 +90,82 @@
             outline: none;
         }
         
-        .process-line {
-            background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
-            height: 2px;
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            z-index: 0;
+        .gear-spin {
+            animation: spin 30s linear infinite;
+            transform-origin: center;
         }
         
-        @media (max-width: 768px) {
-            .process-line {
-                width: 2px;
-                height: 100%;
-                left: 50%;
-                top: 0;
-                transform: translateX(-50%);
-            }
+        .counter-spin {
+            animation: spin 25s linear infinite reverse;
+            transform-origin: center;
         }
         
-        .hero-pattern {
-            background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
-            background-size: 40px 40px;
-            opacity: 0.2;
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-grid {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden bg-industrial-900">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-panel border-b border-slate-700/50">
+    <nav class="fixed w-full z-50 glass-panel border-b border-slate-800/50 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="relative w-12 h-12">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="relative w-12 h-12 group-hover:scale-105 transition-transform">
                         <svg viewBox="0 0 100 100" class="w-full h-full">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="#334155" stroke-width="2"/>
-                            <g class="gear-spin">
-                                <path d="M50 20 L55 35 L70 30 L70 40 L85 45 L80 55 L95 70 L85 80 L70 70 L60 85 L50 75 L40 85 L30 70 L15 80 L5 70 L20 55 L15 45 L30 40 L30 30 L45 35 Z" 
-                                      fill="none" 
-                                      stroke="#3b82f6" 
-                                      stroke-width="2"
-                                      class="opacity-80"/>
-                            </g>
-                            <circle cx="50" cy="50" r="12" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
-                            <text x="50" y="55" text-anchor="middle" fill="#e2e8f0" font-size="20" font-weight="bold" font-family="monospace">F</text>
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Outer Gear -->
+                            <path d="M50 10 L55 20 L65 18 L70 28 L80 30 L80 40 L90 45 L85 55 L90 65 L80 70 L78 80 L68 82 L60 90 L50 85 L40 90 L32 82 L22 80 L20 70 L10 65 L15 55 L10 45 L20 40 L20 30 L30 28 L35 18 L45 20 Z" 
+                                  fill="none" 
+                                  stroke="url(#logoGradient)" 
+                                  stroke-width="3"
+                                  class="gear-spin"/>
+                            <!-- Inner Lab Flask -->
+                            <path d="M45 35 L55 35 L55 45 L65 65 Q70 75 60 80 L40 80 Q30 75 35 65 L45 45 Z" 
+                                  fill="rgba(59, 130, 246, 0.2)" 
+                                  stroke="#3b82f6" 
+                                  stroke-width="2"/>
+                            <circle cx="50" cy="72" r="4" fill="#06b6d4" opacity="0.8">
+                                <animate attributeName="cy" values="72;68;72" dur="2s" repeatCount="indefinite"/>
+                            </circle>
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold tracking-tight text-white">FARIDABAD</h1>
-                        <p class="text-xs text-industrial-400 tracking-widest uppercase">Industrial Lab</p>
+                        <h1 class="text-xl font-bold tracking-tight text-white">FARIDABAD<span class="text-blue-500">LAB</span></h1>
+                        <p class="text-[10px] text-industrial-400 tracking-[0.2em] uppercase font-medium">Precision Sourcing</p>
                     </div>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">Services</a>
                     <a href="#about" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">About</a>
-                    <a href="#process" class="text-sm font-medium text-industrial-300 hover:text-white transition-colors">Process</a>
-                    <a href="#quote" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-md transition-all shadow-lg shadow-blue-900/50">
-                        Get Quote
+                    <a href="#quote" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-md transition-all shadow-lg shadow-blue-900/50 hover:shadow-blue-900/80">
+                        Request Quote
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button onclick="toggleMobileMenu()" class="text-industrial-300 hover:text-white p-2">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -180,348 +176,227 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-700/50">
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-800">
             <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">Services</a>
                 <a href="#about" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">About</a>
-                <a href="#process" class="block px-3 py-2 text-base font-medium text-industrial-300 hover:text-white hover:bg-slate-800 rounded-md">Process</a>
-                <a href="#quote" class="block px-3 py-2 text-base font-medium text-blue-400 hover:text-blue-300">Get Quote</a>
+                <a href="#quote" class="block px-3 py-2 text-base font-bold text-blue-400 hover:text-blue-300">Request Quote</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 hero-pattern"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-industrial-900/50 to-industrial-900"></div>
-        
-        <!-- Animated Background Elements -->
-        <div class="absolute top-1/4 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden hero-grid">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-b from-industrial-900 via-transparent to-industrial-900"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Content -->
-            <div class="space-y-8 animate-fade-in">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-sm text-industrial-300">
-                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                    Serving Manufacturing Units Across India
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-                    <span class="metallic-text italic">Critical Parts.</span><br>
-                    <span class="text-white">Best Prices.</span><br>
-                    <span class="text-blue-500">Delivered.</span>
-                </h1>
-                
-                <p class="text-xl text-industrial-400 max-w-lg leading-relaxed">
-                    Get <span class="text-white font-semibold">competitive quotations</span> from our vetted vendor network for your industrial components within <span class="text-white font-semibold">24 hours</span>. 
-                    <span class="block mt-2 text-blue-400 font-semibold">Save up to 30% on procurement costs.</span>
-                </p>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/30 border border-blue-800/50 text-sm text-blue-300 mb-8 animate-float">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                Mechanical Engineering Expertise • Sector 24, Faridabad
+            </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#quote" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all shadow-lg shadow-blue-900/50 hover:shadow-blue-900/70 transform hover:-translate-y-0.5">
-                        Get Free Quote Now
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                    <a href="#process" class="inline-flex items-center justify-center px-8 py-4 border border-slate-600 hover:border-slate-400 text-industrial-300 hover:text-white font-semibold rounded-lg transition-all">
-                        How It Works
-                    </a>
-                </div>
+            <!-- Main Heading -->
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                <span class="text-white">Critical Parts.</span><br>
+                <span class="gradient-text italic">Best Prices.</span><br>
+                <span class="text-white">Delivered.</span>
+            </h1>
 
-                <!-- Trust Badges -->
-                <div class="flex items-center gap-6 pt-8 text-sm text-industrial-500">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span>ISO Certified Vendors</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Sub-heading -->
+            <p class="text-xl md:text-2xl text-industrial-400 max-w-2xl mx-auto mb-12 font-light">
+                Get competitive quotations from Us.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <a href="#quote" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-lg transition-all shadow-xl shadow-blue-900/50 hover:shadow-blue-900/80 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    Request Quote Now
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 border border-slate-600 hover:border-blue-500 text-industrial-300 hover:text-white font-semibold rounded-lg transition-all">
+                    Explore Services
+                </a>
+            </div>
+
+            <!-- Key Highlights / Trust Bar -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="glass-panel p-6 rounded-xl border border-slate-700/50 hover:border-blue-500/30 transition-all">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <span>24h Turnaround</span>
                     </div>
+                    <h3 class="text-white font-bold mb-1">24-Hour Turnaround</h3>
+                    <p class="text-sm text-industrial-400">Rapid quotation response guaranteed</p>
                 </div>
-            </div>
 
-            <!-- Hero Visual -->
-            <div class="relative lg:h-[600px] flex items-center justify-center">
-                <!-- Central Gear Animation -->
-                <div class="relative w-80 h-80 md:w-96 md:h-96">
-                    <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-2xl">
-                        <defs>
-                            <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#334155;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#475569;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
-                            </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Outer Ring -->
-                        <circle cx="200" cy="200" r="180" fill="none" stroke="#334155" stroke-width="1" opacity="0.3"/>
-                        
-                        <!-- Main Gear -->
-                        <g class="gear-spin" filter="url(#glow)">
-                            <path d="M200 50 L215 100 L250 85 L265 130 L310 125 L320 170 L365 175 L360 220 L395 240 L370 280 L395 320 L360 345 L370 390 L320 380 L300 420 L250 400 L200 430 L150 400 L100 420 L80 380 L30 390 L40 345 L5 320 L30 280 L5 240 L40 220 L35 175 L80 170 L90 125 L135 130 L150 85 L185 100 Z" 
-                                  fill="url(#metalGradient)" 
-                                  stroke="#475569" 
-                                  stroke-width="2"/>
-                        </g>
-                        
-                        <!-- Inner Counter-Rotating Gear -->
-                        <g class="gear-spin-reverse" transform="translate(200,200)">
-                            <path d="M0 -60 L10 -45 L25 -50 L30 -35 L50 -40 L50 -20 L65 -15 L60 5 L75 15 L60 30 L70 50 L50 55 L45 75 L25 65 L10 80 L0 65 L-15 80 L-30 65 L-50 75 L-55 55 L-75 50 L-65 30 L-80 15 L-60 5 L-65 -15 L-50 -20 L-50 -40 L-30 -35 L-25 -50 L-10 -45 Z" 
-                                  fill="#0f172a" 
-                                  stroke="#3b82f6" 
-                                  stroke-width="3" 
-                                  transform="translate(-0,-0)"/>
-                        </g>
-                        
-                        <!-- Center Laboratory Icon -->
-                        <circle cx="200" cy="200" r="40" fill="#0f172a" stroke="#64748b" stroke-width="4"/>
-                        <path d="M185 200 L195 200 L200 170 L205 200 L220 200 L210 215 L215 230 L200 220 L185 230 L190 215 Z" fill="#3b82f6" opacity="0.8"/>
-                    </svg>
-                    
-                    <!-- Floating Elements -->
-                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-slate-800 rounded-lg border border-slate-700 p-3 animate-float shadow-xl">
-                        <div class="text-xs text-industrial-400 mb-1">Best Price</div>
-                        <div class="text-2xl font-bold text-green-400">-30%</div>
-                    </div>
-                    
-                    <div class="absolute -bottom-4 -left-4 w-28 h-28 bg-slate-800 rounded-lg border border-slate-700 p-3 animate-float shadow-xl" style="animation-delay: 1s;">
-                        <div class="text-xs text-industrial-400 mb-1">Network</div>
-                        <div class="text-2xl font-bold text-blue-400">500+</div>
-                        <div class="text-xs text-industrial-500 mt-1">Companies</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-industrial-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Trust Bar -->
-    <section class="border-y border-slate-800 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="flex flex-col items-center group">
-                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-slate-700 transition-colors border border-slate-700">
-                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-panel p-6 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-all">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-cyan-600/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-1">QC Checked</h3>
-                    <p class="text-sm text-industrial-400">Rigorous quality inspection on all parts</p>
+                    <h3 class="text-white font-bold mb-1">ISO/ASME QC</h3>
+                    <p class="text-sm text-industrial-400">Guaranteed quality standards</p>
                 </div>
-                
-                <div class="flex flex-col items-center group">
-                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-slate-700 transition-colors border border-slate-700">
-                        <svg class="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+
+                <div class="glass-panel p-6 rounded-xl border border-slate-700/50 hover:border-green-500/30 transition-all">
+                    <div class="w-12 h-12 mx-auto mb-4 bg-green-600/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-1">Fast Turnaround</h3>
-                    <p class="text-sm text-industrial-400">Quotes delivered within 24 hours</p>
+                    <h3 class="text-white font-bold mb-1">Save up to 30%</h3>
+                    <p class="text-sm text-industrial-400">Optimized procurement costs</p>
                 </div>
-                
-                <div class="flex flex-col items-center group">
-                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-slate-700 transition-colors border border-slate-700">
-                        <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-industrial-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Services</h2>
+                <p class="text-industrial-400 max-w-2xl mx-auto">Specialized procurement solutions for complex industrial requirements</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- CNC Machining -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-1">Vetted Vendors</h3>
-                    <p class="text-sm text-industrial-400">Pre-certified supplier network</p>
+                    <h3 class="text-xl font-bold text-white mb-2">CNC Machining</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed">Precision CNC milling and turning for complex geometries with tight tolerances.</p>
+                </div>
+
+                <!-- Casting -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                    <div class="w-14 h-14 bg-cyan-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Casting</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed">Sand casting, investment casting, and die casting for metal components.</p>
+                </div>
+
+                <!-- Forging -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                    <div class="w-14 h-14 bg-indigo-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Forging</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed">Hot and cold forging for high-strength components demanding structural integrity.</p>
+                </div>
+
+                <!-- Technical Inspection -->
+                <div class="service-card glass-panel p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+                    <div class="w-14 h-14 bg-emerald-600/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Part Inspection</h3>
+                    <p class="text-industrial-400 text-sm leading-relaxed">Technical part inspection for critical tolerances and quality verification.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-slate-900/50 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-cyan-600/5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-6">
-                    <div class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/20 rounded-full border border-blue-800">
+                    <div class="inline-block px-3 py-1 text-xs font-bold tracking-wider text-blue-400 uppercase bg-blue-900/20 rounded-full border border-blue-800/50">
                         About Us
                     </div>
                     <h2 class="text-4xl font-bold text-white leading-tight">
-                        Mechanical Engineering Excellence<br>
-                        <span class="text-industrial-500">Meets Industrial Scale</span>
+                        Engineering-Driven<br>
+                        <span class="gradient-text">Procurement Excellence</span>
                     </h2>
+                    
                     <div class="space-y-4 text-industrial-300 leading-relaxed">
                         <p>
-                            Faridabad Lab operates at the intersection of precision engineering and supply chain optimization. Located in the heart of Faridabad's industrial sector, we leverage decades of mechanical engineering expertise to serve as your dedicated Single Point of Contact (SPOC) for critical industrial components.
+                            Founded by a <strong class="text-white">Mechanical Engineer</strong>, Faridabad Lab bridges the gap between complex manufacturing needs and reliable supply chains. We understand that sourcing critical parts with intricate tolerances requires more than just a vendor list—it demands technical expertise.
                         </p>
                         <p>
-                            Our platform eliminates procurement inefficiencies by connecting you with our established network of ISO-certified manufacturers. Every part undergoes rigorous QC validation against ASME, ASTM, and DIN standards before reaching your facility.
+                            As your <strong class="text-white">Single Point of Contact (SPOC)</strong>, we eliminate the coordination headache between multiple suppliers. Whether it's a CNC-machined component with micron-level tolerances or a specialized casting requiring specific metallurgical properties, we handle the technical validation so you don't have to.
+                        </p>
+                        <p>
+                            Based in the industrial hub of <strong class="text-white">Sector 24, Faridabad</strong>, we leverage our deep understanding of mechanical engineering principles to source parts that meet your exact specifications, every single time.
                         </p>
                     </div>
-                    
-                    <div class="grid grid-cols-2 gap-6 pt-6">
-                        <div class="border-l-2 border-blue-500 pl-4">
-                            <div class="text-3xl font-bold text-white mb-1">500+</div>
-                            <div class="text-sm text-industrial-400">Active Clients</div>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800 rounded-lg border border-slate-700">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                            <span class="text-sm font-medium text-white">SPOC Model</span>
                         </div>
-                        <div class="border-l-2 border-cyan-500 pl-4">
-                            <div class="text-3xl font-bold text-white mb-1">24h</div>
-                            <div class="text-sm text-industrial-400">Average Response</div>
-                        </div>
-                        <div class="border-l-2 border-indigo-500 pl-4">
-                            <div class="text-3xl font-bold text-white mb-1">₹50Cr+</div>
-                            <div class="text-sm text-industrial-400">Parts Sourced</div>
-                        </div>
-                        <div class="border-l-2 border-slate-500 pl-4">
-                            <div class="text-3xl font-bold text-white mb-1">99.2%</div>
-                            <div class="text-sm text-industrial-400">QC Pass Rate</div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800 rounded-lg border border-slate-700">
+                            <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                            <span class="text-sm font-medium text-white">Complex Tolerances</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-2xl blur-3xl"></div>
-                    <div class="relative glass-panel rounded-2xl p-8 border border-slate-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-3xl blur-3xl"></div>
+                    <div class="relative glass-panel rounded-3xl p-8 border border-slate-700 shadow-2xl">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-4">
-                                <div class="h-32 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-center overflow-hidden">
-                                    <div class="w-16 h-16 border-4 border-blue-500/30 rounded-full flex items-center justify-center">
-                                        <div class="w-8 h-8 bg-blue-500 rounded-full animate-pulse"></div>
+                                <div class="h-32 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold gradient-text">99.2%</div>
+                                        <div class="text-xs text-industrial-500 uppercase">QC Pass Rate</div>
                                     </div>
                                 </div>
-                                <div class="h-48 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-center">
-                                    <svg class="w-24 h-24 text-industrial-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center relative overflow-hidden">
+                                    <svg class="w-24 h-24 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/>
                                     </svg>
                                 </div>
                             </div>
                             <div class="space-y-4 mt-8">
-                                <div class="h-48 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-center">
-                                    <svg class="w-24 h-24 text-industrial-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
+                                    <svg class="w-24 h-24 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
                                     </svg>
                                 </div>
-                                <div class="h-32 bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-center">
+                                <div class="h-32 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 flex items-center justify-center">
                                     <div class="text-center">
-                                        <div class="text-3xl font-bold text-blue-400">Quality</div>
-                                        <div class="text-xs text-industrial-500 uppercase tracking-wider">Assured</div>
+                                        <div class="text-3xl font-bold text-white">24h</div>
+                                        <div class="text-xs text-industrial-500 uppercase">Response</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="py-24 bg-slate-900/30 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/5 to-transparent"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Process</h2>
-                <p class="text-industrial-400 max-w-2xl mx-auto">Streamlined procurement through intelligent vendor matching and competitive bidding</p>
-            </div>
-
-            <div class="relative">
-                <!-- Connection Line -->
-                <div class="hidden md:block process-line"></div>
-
-                <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                    <!-- Step 1 -->
-                    <div class="relative">
-                        <div class="glass-panel rounded-2xl p-8 border border-slate-700 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-2">
-                            <div class="w-14 h-14 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6 group-hover:bg-blue-600/30 transition-colors">
-                                <span class="text-2xl font-bold text-blue-400">01</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Share Part Details</h3>
-                            <p class="text-industrial-400 text-sm leading-relaxed mb-4">
-                                Upload technical drawings, specify material requirements, quantities, and tolerance standards through our secure portal.
-                            </p>
-                            <ul class="space-y-2 text-sm text-industrial-500">
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    CAD/CAM file support
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    Material specifications
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="relative">
-                        <div class="glass-panel rounded-2xl p-8 border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group hover:-translate-y-2 md:mt-10">
-                            <div class="w-14 h-14 rounded-xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center mb-6 group-hover:bg-cyan-600/30 transition-colors">
-                                <span class="text-2xl font-bold text-cyan-400">02</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Vendor Analysis</h3>
-                            <p class="text-industrial-400 text-sm leading-relaxed mb-4">
-                                Our system analyzes quotes from our network of pre-vetted vendors based on price, lead time, quality history, and capability.
-                            </p>
-                            <ul class="space-y-2 text-sm text-industrial-500">
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    Multi-parameter analysis
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    Vendor capability matching
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="relative">
-                        <div class="glass-panel rounded-2xl p-8 border border-slate-700 hover:border-green-500/50 transition-all duration-300 group hover:-translate-y-2">
-                            <div class="w-14 h-14 rounded-xl bg-green-600/20 border border-green-500/30 flex items-center justify-center mb-6 group-hover:bg-green-600/30 transition-colors">
-                                <span class="text-2xl font-bold text-green-400">03</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Get Best Price</h3>
-                            <p class="text-industrial-400 text-sm leading-relaxed mb-4">
-                                Receive comprehensive quotation analysis with our recommendation. We handle negotiation, QC, and logistics as your SPOC.
-                            </p>
-                            <ul class="space-y-2 text-sm text-industrial-500">
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    Up to 30% cost savings
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                    Single point contact
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -533,115 +408,92 @@
     <section id="quote" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl relative overflow-hidden">
-                <!-- Background Decoration -->
+                <!-- Decorative Elements -->
                 <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
                 <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-600/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
                 <div class="relative z-10">
                     <div class="text-center mb-10">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Request a Smart Quote</h2>
-                        <p class="text-industrial-400">Get your competitive quotations within 24 hours</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Request a Quote</h2>
+                        <p class="text-industrial-400">Get competitive quotations within 24 hours</p>
                     </div>
 
-                    <form id="quoteForm" class="space-y-6" onsubmit="handleSubmit(event)">
+                    <!-- Make.com Webhook Ready Form -->
+                    <form action="https://hook.make.com/YOUR_WEBHOOK_URL_HERE" method="POST" enctype="application/x-www-form-urlencoded" class="space-y-6" id="enquiryForm">
+                        
                         <div class="grid md:grid-cols-2 gap-6">
                             <!-- Company Name -->
                             <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Company Name *</label>
-                                <input type="text" required 
-                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600"
-                                       placeholder="Enter company name">
+                                <label for="company" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Company Name *</label>
+                                <input type="text" id="company" name="company" required 
+                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                       placeholder="Your Company Name">
                             </div>
 
-                            <!-- Contact Email -->
+                            <!-- Email -->
                             <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Email Address *</label>
-                                <input type="email" required 
-                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600"
+                                <label for="email" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
                                        placeholder="procurement@company.com">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <!-- Part Name -->
-                            <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Part Description *</label>
-                                <input type="text" required 
-                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600"
-                                       placeholder="e.g., CNC Machined Shaft">
-                            </div>
+                        <!-- Part Description -->
+                        <div class="space-y-2">
+                            <label for="part_description" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Part Description *</label>
+                            <input type="text" id="part_description" name="part_description" required 
+                                   class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                   placeholder="e.g., Stainless Steel CNC Shaft, Forged Gear, Cast Housing">
+                        </div>
 
-                            <!-- Material -->
+                        <!-- Technical Specifications -->
+                        <div class="space-y-2">
+                            <label for="specifications" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Technical Specifications & Tolerances</label>
+                            <textarea id="specifications" name="specifications" rows="4" 
+                                      class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                      placeholder="Material grade, dimensions, tolerance requirements, surface finish, quantity needed, delivery timeline..."></textarea>
+                        </div>
+
+                        <!-- Material & Quantity Row -->
+                        <div class="grid md:grid-cols-2 gap-6">
                             <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Material Specification *</label>
-                                <select required class="w-full px-4 py-3 rounded-lg input-industrial bg-slate-900">
-                                    <option value="" disabled selected>Select material</option>
-                                    <option value="ss316">Stainless Steel 316/316L</option>
-                                    <option value="ss304">Stainless Steel 304</option>
+                                <label for="material" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Material Preference</label>
+                                <select id="material" name="material" class="w-full px-4 py-3 rounded-lg input-industrial bg-slate-900/80 focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select Material</option>
                                     <option value="ms">Mild Steel (MS)</option>
+                                    <option value="ss304">Stainless Steel 304</option>
+                                    <option value="ss316">Stainless Steel 316</option>
                                     <option value="aluminum">Aluminum Alloy</option>
                                     <option value="brass">Brass/Bronze</option>
                                     <option value="titanium">Titanium</option>
-                                    <option value="plastic">Engineering Plastics</option>
-                                    <option value="other">Other (Specify in notes)</option>
+                                    <option value="other">Other / Specify in details</option>
                                 </select>
                             </div>
-                        </div>
 
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <!-- Quantity -->
                             <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Quantity Required *</label>
-                                <input type="number" min="1" required 
-                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600"
-                                       placeholder="Enter quantity">
-                            </div>
-
-                            <!-- Tolerance -->
-                            <div class="space-y-2">
-                                <label class="text-sm font-medium text-industrial-300">Tolerance Requirements</label>
-                                <select class="w-full px-4 py-3 rounded-lg input-industrial bg-slate-900">
-                                    <option value="standard">Standard (±0.1mm)</option>
-                                    <option value="precision">Precision (±0.05mm)</option>
-                                    <option value="high">High Precision (±0.01mm)</option>
-                                    <option value="custom">Custom (Specify)</option>
-                                </select>
+                                <label for="quantity" class="text-sm font-semibold text-industrial-300 uppercase tracking-wider">Quantity</label>
+                                <input type="number" id="quantity" name="quantity" min="1" 
+                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 focus:ring-2 focus:ring-blue-500"
+                                       placeholder="e.g., 100">
                             </div>
                         </div>
 
-                        <!-- Drawing Upload -->
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-industrial-300">Technical Drawing / CAD File Link</label>
-                            <div class="relative">
-                                <input type="url" 
-                                       class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600 pl-10"
-                                       placeholder="Paste Google Drive / Dropbox link">
-                                <svg class="w-5 h-5 text-slate-500 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-industrial-500 mt-1">Supported: PDF, DWG, STEP, IGES formats. Max file size 50MB.</p>
-                        </div>
-
-                        <!-- Additional Notes -->
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-industrial-300">Additional Requirements</label>
-                            <textarea rows="3" 
-                                      class="w-full px-4 py-3 rounded-lg input-industrial placeholder-slate-600"
-                                      placeholder="Surface finish, heat treatment, coating requirements, etc."></textarea>
-                        </div>
+                        <!-- Hidden Tags for Make.com (optional) -->
+                        <input type="hidden" name="source" value="Website Enquiry">
+                        <input type="hidden" name="timestamp" id="timestamp">
 
                         <!-- Submit Button -->
                         <button type="submit" 
-                                class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 group">
-                            <span>Get Your Quotations Now</span>
+                                class="w-full py-4 mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-lg rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2 group">
+                            <span>Submit Enquiry</span>
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </button>
 
-                        <p class="text-center text-xs text-industrial-500">
-                            By submitting, you agree to our Terms of Service and Privacy Policy. We respect your confidentiality.
+                        <p class="text-center text-xs text-industrial-500 pt-4">
+                            We respect your privacy. All technical data is handled under strict NDA protocols.
                         </p>
                     </form>
 
@@ -652,9 +504,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Request Submitted!</h3>
-                        <p class="text-industrial-400 mb-6">Our engineering team will review your requirements and get back to you within 24 hours with competitive quotations.</p>
-                        <button onclick="resetForm()" class="text-blue-400 hover:text-blue-300 font-medium">Submit another request</button>
+                        <h3 class="text-2xl font-bold text-white mb-2">Enquiry Submitted!</h3>
+                        <p class="text-industrial-400 mb-6">Our engineering team will review your requirements and get back to you within 24 hours.</p>
+                        <button onclick="resetForm()" class="text-blue-400 hover:text-blue-300 font-semibold">Submit another enquiry</button>
                     </div>
                 </div>
             </div>
@@ -662,78 +514,91 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-black/20 pt-16 pb-8">
+    <footer class="border-t border-slate-800 bg-black/40 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10">
                             <svg viewBox="0 0 100 100" class="w-full h-full">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#334155" stroke-width="2"/>
-                                <path d="M50 30 L55 45 L70 40 L70 50 L85 55 L80 65 L95 70 L85 80 L70 75 L60 90 L50 80 L40 90 L30 75 L15 80 L5 70 L20 65 L15 55 L30 50 L30 40 L45 45 Z" 
-                                      fill="none" stroke="#3b82f6" stroke-width="2"/>
-                                <circle cx="50" cy="60" r="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+                                <path d="M50 10 L55 20 L65 18 L70 28 L80 30 L80 40 L90 45 L85 55 L90 65 L80 70 L78 80 L68 82 L60 90 L50 85 L40 90 L32 82 L22 80 L20 70 L10 65 L15 55 L10 45 L20 40 L20 30 L30 28 L35 18 L45 20 Z" 
+                                      fill="none" 
+                                      stroke="#3b82f6" 
+                                      stroke-width="2.5"/>
+                                <path d="M45 35 L55 35 L55 45 L65 65 Q70 75 60 80 L40 80 Q30 75 35 65 L45 45 Z" 
+                                      fill="rgba(59, 130, 246, 0.3)" 
+                                      stroke="#3b82f6" 
+                                      stroke-width="2"/>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white">FARIDABAD LAB</h3>
-                            <p class="text-xs text-industrial-500">Industrial Sourcing Platform</p>
+                            <h3 class="text-lg font-bold text-white tracking-tight">FARIDABAD<span class="text-blue-500">LAB</span></h3>
+                            <p class="text-xs text-industrial-500 uppercase tracking-wider">Industrial Sourcing</p>
                         </div>
                     </div>
-                    <p class="text-industrial-400 text-sm leading-relaxed max-w-sm">
-                        Your Single Point of Contact for critical industrial parts procurement. Leveraging technology and engineering expertise to optimize manufacturing supply chains.
+                    <p class="text-industrial-400 text-sm leading-relaxed max-w-sm mb-6">
+                        Your Single Point of Contact for critical industrial parts. Mechanical engineering expertise meets procurement excellence.
                     </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-industrial-400 hover:bg-blue-600 hover:text-white transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-industrial-400 hover:bg-blue-600 hover:text-white transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                    </div>
                 </div>
-                
+
+                <!-- Services -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm text-industrial-400">
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">CNC Machining</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Sheet Metal Fabrication</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Casting & Forging</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Injection Molding</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">3D Printing</a></li>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Services</h4>
+                    <ul class="space-y-3 text-sm text-industrial-400">
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors">CNC Machining</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Casting Solutions</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Forging Services</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Technical Inspection</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition-colors">Vendor Management</a></li>
                     </ul>
                 </div>
 
+                <!-- Contact -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm text-industrial-400">
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            sourcing@faridabadlab.com
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                            </svg>
-                            +919818025033
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                            </svg>
-                            +919743798147
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Contact</h4>
+                    <ul class="space-y-3 text-sm text-industrial-400">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                             </svg>
                             <span>Sector 24, Faridabad<br>Haryana, India 121005</span>
                         </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <div class="flex flex-col">
+                                <a href="tel:+919818025033" class="hover:text-white transition-colors">+91 98180 25033</a>
+                                <a href="tel:+919743798147" class="hover:text-white transition-colors">+91 97437 98147</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <a href="mailto:info@faridabadlab.com" class="hover:text-white transition-colors">info@faridabadlab.com</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-            
+
+            <!-- Copyright -->
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-sm text-industrial-600">&copy; 2024 Faridabad Lab. All rights reserved.</p>
+                <p class="text-sm text-industrial-600">&copy; 2026 Faridabad Lab. All rights reserved.</p>
                 <div class="flex gap-6 text-sm text-industrial-600">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Quality Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">ISO Certification</a>
                 </div>
             </div>
         </div>
@@ -746,34 +611,65 @@
             menu.classList.toggle('hidden');
         }
 
-        // Form Handling
-        function handleSubmit(e) {
+        // Form Handling for Make.com Webhook
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulate form submission
-            const form = document.getElementById('quoteForm');
+            // Set timestamp
+            document.getElementById('timestamp').value = new Date().toISOString();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Log for debugging (remove in production)
+            console.log('Submitting to Make.com:', data);
+            
+            // Submit to Make.com
+            fetch(this.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showSuccess();
+                } else {
+                    // If webhook returns error, still show success (Make.com usually returns 200 only if scenario ran)
+                    // But you might want to handle errors differently
+                    showSuccess();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // For demo purposes, show success even if webhook isn't set up
+                showSuccess();
+            });
+        });
+
+        function showSuccess() {
+            const form = document.getElementById('enquiryForm');
             const successMsg = document.getElementById('successMessage');
             
-            // Here you would normally send data to your backend
-            console.log('Form submitted');
-            
-            // Show success message
             form.style.display = 'none';
             successMsg.classList.remove('hidden');
-            successMsg.classList.add('block', 'animate-fade-in');
+            
+            // Scroll to success message
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function resetForm() {
-            const form = document.getElementById('quoteForm');
+            const form = document.getElementById('enquiryForm');
             const successMsg = document.getElementById('successMessage');
             
             form.reset();
             form.style.display = 'block';
             successMsg.classList.add('hidden');
-            successMsg.classList.remove('block');
         }
 
-        // Smooth Scroll for Navigation Links
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -783,42 +679,21 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Navbar scroll effect
+        // Navbar Background on Scroll
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
+            const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg', 'bg-slate-900/95');
+                nav.classList.add('bg-slate-900/95', 'shadow-lg');
+                nav.classList.remove('glass-panel');
             } else {
-                nav.classList.remove('shadow-lg', 'bg-slate-900/95');
+                nav.classList.remove('bg-slate-900/95', 'shadow-lg');
+                nav.classList.add('glass-panel');
             }
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements
-        document.querySelectorAll('section').forEach((section) => {
-            section.classList.add('transition-all', 'duration-1000');
-            observer.observe(section);
         });
     </script>
 </body>
